@@ -1,0 +1,6 @@
+# https://stackoverflow.com/questions/7735647/replacing-nas-with-latest-non-na-value
+library(data.table)
+nafill(y, type = "locf")
+
+# NA in several columns
+setnafill(d, type = "locf")

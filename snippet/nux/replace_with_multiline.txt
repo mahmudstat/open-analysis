@@ -1,0 +1,15 @@
+if the file test has the following contents ...
+
+foo
+bar
+blah _data_and_data_
+foo
+_data_ foobar _data_ again
+... and the Bash variable $DATA is ...
+
+1
+2
+3
+4
+5
+... then awk -v r=$DATA '{gsub(/_data_/,r)}1' test replaces all occurrences of the regular expression _data_ in the file test with the contents of $DATA, resulting in the following:

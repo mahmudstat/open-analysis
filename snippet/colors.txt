@@ -1,0 +1,27 @@
+barplot(1:5, col=rainbow(5))
+# Use heat.colors
+barplot(1:5, col=heat.colors(5))
+# Use terrain.colors
+barplot(1:5, col=terrain.colors(5))
+# Use topo.colors
+barplot(1:5, col=topo.colors(5))
+# Use cm.colors
+barplot(1:5, col=cm.colors(5))
+
+"https://www.datanovia.com/en/blog/top-r-color-palettes-to-know-for-great-data-visualization/#viridis-color-palettes"
+
+#ggsci
+ggplot(iris, aes(Species, Sepal.Length)) +
+  geom_boxplot(aes(fill = Species)) +
+  scale_fill_jco()+
+  theme_classic() +
+  theme(legend.position = "top")
+  
+scale_color_npg() and scale_fill_npg(): Nature Publishing Group color palettes
+scale_color_aaas() and scale_fill_aaas(): American Association for the Advancement of Science color palettes
+scale_color_lancet() and scale_fill_lancet(): Lancet journal color palettes
+scale_color_jco() and scale_fill_jco(): Journal of Clinical Oncology color palettes
+scale_color_tron() and scale_fill_tron(): This palette is inspired by the colors used in 
+
+Online Pallettes
+https://coolors.co/palettes/trending 

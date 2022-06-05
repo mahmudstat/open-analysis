@@ -1,0 +1,4 @@
+## Group by top n
+
+iris %>% arrange(desc(Sepal.Length)) %>% 
+  group_by(Species) %>% slice(1:4)

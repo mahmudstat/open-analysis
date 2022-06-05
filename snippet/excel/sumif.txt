@@ -1,0 +1,3 @@
+=SUMIF(B3:B11,"East",C3:C11)
+
+C3 is to sum

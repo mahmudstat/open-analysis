@@ -1,0 +1,65 @@
+district,district_name,id
+Barisal,Barishal,0
+Bhola,Bhola,1
+Borgona,Barguna,2
+Jhalakati,Jhalokati,3
+Patuakhali,Patuakhali,4
+Pirojpur,Pirojpur,5
+Bandarbon,Bandarban,6
+Brahmanbaria,Brahmanbaria,7
+Chandpur,Chandpur,8
+Chittagong,Chattogram,9
+Comilla,Cumilla,10
+Cox's Bazar,Cox's Bazar,11
+Feni,Feni,12
+Khagrachari,Khagrachhari,13
+Lakshmipur,Lakshmipur,14
+Noakhali,Noakhali,15
+Parbattya Chattagram,Rangamati,16
+Dhaka,Dhaka,17
+Faridpur,Faridpur,18
+Gazipur,Gazipur,19
+Gopalgonj,Gopalganj,20
+Jamalpur,Jamalpur,21
+Kishoreganj,Kishoreganj,22
+Madaripur,Madaripur,23
+Manikgonj,Manikgonj,24
+Munshigonj,Munshiganj,25
+Naray Angonj,Narayanganj,26
+Narshingdi,Narsingdi,27
+Nasirabad,Mymensingh,28
+Netrakona,Netrokona,29
+Rajbari,Rajbari,30
+Shariatpur,Shariatpur,31
+Sherpur,Sherpur,32
+Tangail,Tangail,33
+Bagerhat,Bagerhat,34
+Choua Danga,Chuadanga,35
+Jessore,Jashore,36
+Jhenaidah,Jhenaidah,37
+Khulna,Khulna,38
+Kustia,Kushtia,39
+Magura,Magura,40
+Meherpur,Meherpur,41
+Narail,Narail,42
+Shatkhira,Satkhira,43
+Bogra,Bogura,44
+Jaipurhat,Joypurhat,45
+Naogaon,Naogaon,46
+Natore,Natore,47
+Nawabganj,Chapainawabganj,48
+Pabna,Pabna,49
+Rajshahi,Rajshahi,50
+Sirajgonj,Sirajganj,51
+Dinajpur,Dinajpur,52
+Gaibanda,Gaibandha,53
+Kurigram,Kurigram,54
+Lalmonirhat,Lalmonirhat,55
+Nilphamari,Nilphamari,56
+Panchagarh,Panchagarh,57
+Rongpur,Rangpur,58
+Thakurgaon,Thakurgaon,59
+Hobiganj,Habiganj,60
+Moulvibazar,Moulvibazar,61
+Sun Amgonj,Sunamganj,62
+Sylhet,Sylhet,63

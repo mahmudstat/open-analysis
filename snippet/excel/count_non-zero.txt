@@ -1,0 +1,3 @@
+
+# Count blank plus 0 (0, blank, 1) will give 1
+COUNTIF (F6:F36,"<>0")

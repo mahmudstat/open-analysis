@@ -1,0 +1,7 @@
+change_mode_tidy %>% ggplot(aes(x= Usage, y = Count, fill = Usage))+
+  geom_bar(stat="identity")+
+  facet_wrap(~Mode)+
+  theme(legend.position = "none",
+        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
+ # coord_flip()+
+  scale_fill_brewer(palette = "Paired")

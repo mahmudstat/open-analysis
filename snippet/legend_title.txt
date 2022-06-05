@@ -1,0 +1,5 @@
+car_decision %>% ggplot(aes(x= Decision, y = Count, fill = ï..Type))+
+  geom_bar(stat="identity", position = "dodge")+
+  theme(legend.position = "right")+
+  # coord_flip()+
+  scale_fill_brewer(palette = "Paired", name = "Vehicle Type")

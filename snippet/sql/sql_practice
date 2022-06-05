@@ -1,0 +1,261 @@
+select * from Orders
+where Freight between 5 and 30;
+
+select * from Orders
+where freight < 3;
+
+select CustomerId from Orders
+where CustomerId like '%a';
+
+select * from Orders
+where EmployeeID in (2,4,5);
+
+select * from Orders
+where EmployeeID=5 and ShipVia>=2;
+
+select CustomerID from Orders
+where OrderID=10248;
+
+select distinct CustomerID
+from Orders;
+
+select * from Orders
+where ShipVia=3 or ShipCountry='Brazil';
+
+select CustomerID from Orders
+where NOT ShipCountry='Germany';
+
+select count (CustomerID) from Orders;
+
+select * from Orders
+where ShipCountry='Germany' and ShipVia in (2,3);
+
+select * from Customers 
+where NOT (Country='USA' or Country='Germany');
+
+select * from Orders
+order by ShipCountry desc , ShipVia asc;
+
+select * from Orders
+limit 5;
+
+SELECT ContactName, Address
+FROM Customers
+WHERE Address IS NULL;
+
+insert into Orders (ShipCountry)
+values ('Bangladesh'); 
+
+select OrderID from Orders
+where ShipCountry='Bangladesh';
+
+SELECT * from Orders;
+
+Select ShipCountry from Orders
+where EmployeeID is null;
+
+select EmployeeID from Orders
+where ShipRegion is not null; 
+
+update Orders
+set ShipVia = '1' 
+where ShipCountry = 'Bangladesh';
+
+update Orders
+set Freight = '3.5'
+where ShipCountry = 'Bangladesh';
+
+UPDATE Customers
+SET ContactName = 'Alfred Schmidt', City= 'Frankfurt'
+WHERE CustomerID = 'ALFKI';
+
+insert into Orders (ShipCity)
+Values('Khulna');
+
+delete from Orders
+where ShipCity='Khulna';
+
+select * from Orders
+where CustomerID like '%a'
+limit 5;
+
+select min (OrderID) as MinOrder
+From Orders;
+
+select min(UnitPrice) MinUPrice
+from Products;
+
+select max(UnitPrice) as MaxUP
+From Products; 
+
+select count (ProductID) as LowPrice
+from Products
+where UnitPrice < 20;
+
+select avg(UnitPrice) as AvUP
+from Products
+where UnitPrice < 20;
+
+select sum(UnitPrice)
+from Products;
+
+select * from Products
+where ProductName like '%le%';
+
+select * from Customers
+where City like 'ber%';
+
+select * from Customers 
+where Country like 'u%k';
+
+select * from Customers
+where City like '_ondon';
+
+select * from Customers
+where City glob '*na*';
+
+select * from Customers
+where phone GLOB '*[0-9]';
+
+select * from Customers
+where Phone like '%-%';
+
+select ProductName, UnitPrice, SupplierID
+from Products
+where ProductName = 'Tofu';
+
+select ProductName, UnitPrice
+from Products
+where Discontinued <> 0;
+
+select ProductName, UnitPrice
+from Products
+where UnitPrice between 10 and 20;
+
+select ProductName, UnitPrice
+from Products
+where ProductName = 'Pavlova' or 'Chai';
+
+select * from Products
+where Not ProductName = 'Pavlova' and Not ProductName ='Chai';
+
+select UnitPrice * UnitsInStock AS UPST
+from Products; 
+
+select count(UnitPrice) as LowCost
+from Products
+where UnitPrice > 30;
+
+select count(distinct UnitPrice)
+from Products;
+
+select Region,
+count (CustomerID) as NCUS
+from Customers
+group by Region;
+
+select CategoryID,
+sum (UnitPrice) as UP
+from Products
+group by CategoryID;
+
+select  AlbumId, count(TrackId) as NT 
+from Tracks
+group by AlbumId 
+having NT > 12;
+
+
+-- Subqueries
+
+select CustomerID, Region
+from Customers
+where CustomerID in (select CustomerID
+from Orders
+where Freight > 100);
+
+select * from Customers;
+
+select CustomerID, CompanyName
+from Customers
+where CustomerID in 
+(select CustomerID
+from Orders
+where EmployeeID in ('5', '6'));
+
+-- The below helped make the above 
+select CustomerID
+from Orders
+where EmployeeID in ('5', '6');
+
+select count (OrderID) as CD
+from Orders
+group by 
+select ContactName
+from Customers;
+
+-- Joins
+-- cross join: not matching on anything
+
+select Region, City
+from Suppliers
+cross join Customers;
+
+-- inner join
+
+select CompanyName,
+ProductName, City,
+UnitPrice
+from Suppliers inner join Products
+on Suppliers.SupplierID = Products.SupplierID;
+
+select o.OrderID, c.CompanyName, e.LastName
+from ((Orders o inner join Customers c on o.CustomerID = c. CustomerID)
+inner join Employees e on o.EmployeeID = e.EmployeeID);
+
+-- Aliases
+
+select CustomerID, ShipCity, ContactName
+From Customers as C , Orders as O
+where C.CustomerID = O.CustomerID;
+
+-- self join; like getting customers from same city
+-- test other ways too
+
+select C.ContactName As Cus1, B.CompanyName,C.City
+from Customers C, Customers B
+where C.CustomerID = B.CustomerID
+and C.City = B.City
+Order by C.City;
+
+select * from Customers
+order by City;
+
+-- don't uderstand differences
+
+-- left join
+
+select C.ContactName, O.OrderID
+From Customers C
+left join Orders O on C.CustomerID = O.CustomerID
+order by C.ContactName;
+
+select S.CompanyName, P.ProductName, City, Fax, UnitPrice, UnitsinStock
+from Suppliers S
+left join Products P on S.SupplierID = P.SupplierID
+order by UnitPrice desc;
+
+select * from Products;
+
+-- 77: this verifies all records from products tables are taken
+
+-- UNION
+-- Must same columns with same data types
+
+select City, Country from Customers
+where Country = 'Germany'
+union
+select City, Country from Suppliers
+where Country = 'Germany'
+Order by CIty;
+
+-- Which German cities have suppliers

@@ -1,0 +1,4 @@
+# Group by max/min
+
+iris %>% group_by(Species) %>% 
+  summarise(max = max(Sepal.Length))

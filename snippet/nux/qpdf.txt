@@ -1,0 +1,6 @@
+qpdf
+Split and merge
+qpdf sohih_masnun_oyajifa.pdf --pages . 1-5 -- demo.pdf
+———————
+metadata dropped
+qpdf --empty --pages infile.pdf 1-5 -- outfile.pdf

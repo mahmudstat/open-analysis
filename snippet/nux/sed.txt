@@ -1,0 +1,14 @@
+## Change [] to "" separately
+sed 's/\[//g;s/\]//g' /path/to/file
+
+# Change [] at once, if nothing's inside
+sed 's/[[]]//g' /path/to/file
+
+## For revealjs presentations
+
+sed s/"border-color: black"/"border-color: green"/g prob_ch3_expectation.html > new ; mv new prob_ch3_expectation.html
+sed s/"border-style: dotted"/"border-style: solid"/g prob_ch3_expectation.html > new ; mv new prob_ch3_expectation.html
+
+## Add "-" to all lines
+
+sed -i -e 's/^/-/' file

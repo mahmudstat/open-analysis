@@ -1,0 +1,1 @@
+min(exp22_daily$expense[exp22_daily$expense>0])

@@ -1,0 +1,8 @@
+* Unique values
+
+UNIQUE(range)
+
+
+* Preselected Value
+
+Data > Data Validation > Settings > List > Allow > Select Source

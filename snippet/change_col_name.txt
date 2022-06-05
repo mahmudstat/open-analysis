@@ -1,0 +1,1 @@
+names(df)[names(df) == 'old_col'] <- 'new_col'

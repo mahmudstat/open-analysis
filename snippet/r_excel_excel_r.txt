@@ -1,0 +1,13 @@
+#R to Excel 
+rexcel <- function(x,row.names=FALSE,col.names=TRUE,...) {
+  write.table(x,"clipboard",sep="\t",
+               row.names=row.names,col.names=col.names,...)
+}
+
+#Excel to R
+
+excelr <- function(header=TRUE,...) {
+  read.table("clipboard",sep="\t",header=header,...)
+}
+
+rexcel(table(ethical_numeric$B1.3,ethical_numeric$B2.3))

@@ -1,0 +1,6 @@
+levels(cross_trend$Var1) <- c("Poor", "Below Average",
+                                      "Average", "Good", "Excellent")
+									  
+## Add an empty level
+iris$Species <- factor(iris$Species, levels = c(levels(iris$Species), "Echeveria"))
+									

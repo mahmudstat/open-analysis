@@ -1,0 +1,31 @@
+## Library 
+library(ggplot2)
+
+## Equations
+
+# https://1fd82708630c41ae83e471bcd90c9919.app.rstudio.cloud/file_show?path=%2Fcloud%2Fproject%2Flove_equation.html
+
+# Curves
+n <- 5000
+t <- 1:n
+x <- 16*(sin(t))^3
+y <- 13*cos(t)-5*cos(2*t)-2*cos(3*t)-cos(4*t)
+plot(x,y, col=rainbow(n), pch=19)
+
+## using ggplot2
+
+df <- data.frame(t,x,y)
+
+p <- ggplot(df, aes(x,y))+
+  theme_void()+
+  theme(legend.position = "none")
+
+p+geom_line(color = "red")
+
+p+geom_line(color = "blue")
+
+p+geom_line(color = topo.colors(5000))
+
+p+geom_line(color = rainbow(5000))
+
+p+geom_line(color = rep(2:6, each = 1000))

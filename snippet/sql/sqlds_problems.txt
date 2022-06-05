@@ -1,0 +1,17 @@
+-- Problems
+
+-- How many albums does the artist Led Zeppelin have?
+
+select count(AlbumID)
+from albums
+where ArtistID in (select ArtistID from artists
+where Name = 'Led Zeppelin');
+
+2. Create a list of album titles and the unit prices for the artist "Audioslave".
+How many records are returned?
+
+3. 
+
+4.
+
+5. 

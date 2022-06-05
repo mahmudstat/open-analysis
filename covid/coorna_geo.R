@@ -1,26 +1,37 @@
 #Libraries
 library(sp)
 library(rgdal)
-library(ggplot2)
+library(tidyverse)
 library(ggmap)
 library(maps)
 library(mapdata)
-library(tidyverse)
+
 library(plyr)
 library(RColorBrewer)
 library(mapproj)
 library(scales)
 
+## Load all
+
+# pkg <- c("tidyverse", "readxl", "broom", "RColorBrewer", "nnet")
+
+# lapply(pkg, require, character.only = TRUE)
+
 #Read rds fiels
 #These are for r
-gadm36_BGD_0_sp <- readRDS("/media/mahmud/C/Stat/geo/gadm36_BGD_0_sp.rds")
-class(gadm36_BGD_0_sp)
-plot(gadm36_BGD_0_sp)
 
-gadm36_BGD_4_sp <- readRDS("geo/gadm36_BGD_4_sp.rds")
+# Source: https://gadm.org/download_country_v3.html
 
-plot(gadm36_BGD_4_sp, col="blue")
+gadm36_BGD_0_sp <- readRDS("data/gadm36_BGD_0_sp.rds")
+class(gadm36_BGD_1_sp)
+plot(gadm36_BGD_1_sp)
 
+gadm36_BGD_4_sp <- readRDS("data/gadm36_BGD_4_sp.rds")
+
+plot(gadm36_BGD_2_sp, col="blue")
+
+gadm36_BGD_2_sp <- readRDS("data/gadm36_BGD_2_sp.rds")
+gadm36_BGD_2_sp$crit <- sample(64)
 
 zilla=readOGR("D:/R/RGIS/BD", layer="BGD_adm2")
 zilla$crit=sample(64)
@@ -116,6 +127,7 @@ zilla@data %>% select(NAME_2) %>% write_csv("districts.csv")
 
 
 ###FRpm https://www.r-spatial.org//r/2018/10/25/ggplot2-sf.html
+
 library("ggplot2")
 theme_set(theme_bw())
 library("sf")

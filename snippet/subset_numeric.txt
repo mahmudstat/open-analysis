@@ -1,0 +1,2 @@
+data.numcols <- data[, sapply(data, is.numeric)]
+data_num2 <- select_if(data, is.numeric) 

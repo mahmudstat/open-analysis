@@ -1,0 +1,1 @@
+f=factor(f, levels = f[order(num)])

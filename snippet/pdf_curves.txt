@@ -1,0 +1,19 @@
+## Continuous
+
+curve(20*x*(1-x)^3, 0, 1)
+
+## Discrete
+
+x <- 1:6
+y <- c(1/7, 2/7, 1/7, rep(2/7,2), 1/7)
+
+plot(x,y, type = "h", ylim = c(0,1))
+
+## Negative probability
+
+u <- 1:6
+v <- c(1/7, 2/7, 5/7, -1/7, 1/7, -1/7)
+
+plot(u,v, type = "h", ylim = c(-1,1))
+
+curve(x^3+4*x-2/3*(x+1), -2,10, main="pdf curve")

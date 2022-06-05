@@ -1,0 +1,9 @@
+us_races <- tibble(
+  Race = c("White", "Black", "Multiracial", "Asian", "Others"), 
+  Percentage = c(61.6, 12.4, 10.2, 6, 9.8))
+
+us_races %>% ggplot(aes(Race, Percentage, fill = Race))+
+  geom_bar(stat="identity", width = 0.6)+
+  scale_fill_brewer(palette = "Set2")
+  geom_text(data = us_races, aes(Race, Percentage-2, 
+                                 label=paste0(Percentage, "%")))

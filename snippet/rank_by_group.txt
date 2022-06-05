@@ -1,0 +1,10 @@
+# Simple Rank
+
+dat <- tibble(x=sample(20,10))
+dat %>% mutate(rank = rank(-x)) %>% 
+  arrange(rank)
+
+writing_rank <- writing_compt %>%  arrange(category) %>% 
+  group_by(category) %>% 
+  mutate(Grouped_Rank=rank(-Percentage, ties.method = "average")) %>% 
+  arrange(category, Grouped_Rank)
