@@ -3,3 +3,6 @@
 .RData
 .Ruserdata
 gadm*
+*bash.html
+house-prices/data/*
+.RData

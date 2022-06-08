@@ -1,0 +1,45 @@
+---
+title: "Covid Analysis with R and Bash"
+author: "Mahmud"
+date: '2022-06-07'
+output: html_document
+---
+
+## Libraries
+
+```{r}
+library(rvest)
+library(data.table)
+library(tidyverse)
+```
+
+## Extract Data
+
+We use `rvest` package to extract data from webpage.
+
+```{r}
+url <- "https://www.worldometers.info/coronavirus"
+file <- read_html(url)
+class(file)
+covid_tables <- html_nodes(file, "table")
+covid_cases <- html_table(covid_tables[1], fill = TRUE)[[1]]
+
+View(covid_cases)
+
+write_csv(covid_cases, file = "covid_cases.csv")
+```
+
+Let's take a quick look at the data
+
+```{r}
+head(covid_cases)
+```
+
+Now that we have our data, we would now clean it using Bash.
+
+-   Replace "," with "" to make numbers numeric
+-   Remove +
+
+```{bash}
+awk -F'"' -v OFS='' '{ for (i=2; i<=NF; i+=2) gsub(",", "", $i) } 1' covid_cases.csv | sponge covid_cases.csv
+```

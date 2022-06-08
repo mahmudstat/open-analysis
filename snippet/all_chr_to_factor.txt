@@ -1,0 +1,8 @@
+DF <- data.frame(x=letters[1:5], y=1:5, stringsAsFactors=FALSE)
+
+# To read strings as factors
+
+hp_train <- fread(file = "kaggle/house-prices/data/train.csv", 
+                  stringsAsFactors = TRUE)
+# Or 
+DF <- as.data.frame(unclass(DF),stringsAsFactors=TRUE)
