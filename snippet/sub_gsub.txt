@@ -1,0 +1,6 @@
+df <- data.frame(x=c("1,2", "2,3"), y = c("23", "4,3"))
+
+apply(data, 2, function(x) gsub(",", "", gsub("([a-zA-Z]),", "\\1 ", x))) 
+## Remove commas from numbers and strings
+
+apply(df, 2, function(x) gsub(",", "", x)) # Remove comma from numbers only
