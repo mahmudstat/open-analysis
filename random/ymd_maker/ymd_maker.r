@@ -12,3 +12,4 @@ for (i in times) {
 
 ymd$Day = Day
 
+write.csv(ymd, "random/ymd_maker/ymd.csv")
