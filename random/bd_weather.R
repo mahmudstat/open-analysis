@@ -26,6 +26,11 @@ bd_division_weather %>% group_by(City) %>%
 
 # Rainfall Map
 
+# Divisional Map: Download from the following link 
+# https://gadm.org/download_country_v3.html
+# For divisions: BGD_1_sp
+# For districts: BGD_2_sp
+
 bd_div <- readRDS("data/gadm36_BGD_1_sp.rds")
 
 dim(bd_div)
