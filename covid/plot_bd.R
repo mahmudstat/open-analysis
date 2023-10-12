@@ -3,6 +3,8 @@
 library(sp)
 library(tidyverse)
 
+## 2 for districts
+
 bd_dist <- readRDS("data/gadm36_BGD_2_sp.rds")
 corona_dat <- read_csv("data/corona.csv")
 
@@ -16,6 +18,8 @@ spplot(bd_dist, "covid",col.regions=heat.colors(5),
 ## Plot using ggplot2
 
 bd_dist_gg <- fortify(bd_dist)
+
+dim(bd_dist_gg)
 
 View(bd_dist_gg)
 class(bd_dist_gg)
