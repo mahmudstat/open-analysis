@@ -1,7 +1,14 @@
 #Libs
 
+pkg <- c("tidyverse", "readxl", "broom", "RColorBrewer", "sf", "sp", "ggmap")
+
+library(ggspatial) # For north arrow
+
+lapply(pkg, require, character.only = TRUE)
+
 library(tidyverse)
 library(RColorBrewer)
+library(sf)
 
 bd_division_weather <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ6g3f0KJDt19di48bx55E_mTZZAtrop8psWbIUk4hD0YiVO4ivQHUw5yA3wTgb2_ddAn72Hut_GkuR/pub?output=csv")
 
@@ -11,7 +18,7 @@ bd_dist_names <- read_csv("data/bd_districts.csv")
 
 View(bd_dist_names)
 
-# Bar Plot
+# Bar Plot (Annual Rainfall)
 
 bd_division_weather %>% group_by(City) %>% 
   summarise(TotRain = sum(Rainfall_mm)) %>% 
@@ -27,6 +34,8 @@ bd_division_weather %>% group_by(City) %>%
   labs(y = "Rainfall", 
        x = "City", 
        title = "Yearly Rainfall (mm) in Bangladesh Divisional Cities")
+
+# 
 
 # Rainfall Map
 
@@ -60,9 +69,9 @@ bd_dist_rain <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ6g3f
 
 View(bd_dist_rain)
 
-# See top five 
+# See top values 
 
-bd_dist_rain %>% arrange(Rainfall18_m) %>% top_n(5)
+bd_dist_rain %>% slice_max(Rainfall18_m, n = 10)
 
 # More than 2k
 
@@ -90,6 +99,26 @@ bd_dist_rain$District
 # Fortified data
 
 bd_div_gg <- fortify(bd_div)
+latlon <- read_csv("data/geocodes.csv")
+View(latlon)
 
+# Points on map
+
+ggplot(bd_div_gg, aes(long, lat, group=group)) +
+  geom_polygon() +
+  geom_path(color= "white")+
+  coord_equal()+
+  annotation_north_arrow(location = "tr", which_north = "true", 
+                         pad_x = unit(0.75, "in"), pad_y = unit(0.5, "in"),
+                         style = north_arrow_fancy_orienteering)
+  geom_point(data = latlon, aes(lon, lat))
+
+  
+  
+## Maps from Google
+qmap("Dhaka")
+  
+# Geocode 
+# https://www.geoapify.com/tools/geocoding-online
 
 

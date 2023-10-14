@@ -61,8 +61,8 @@ spplot(bd_dist, "visit", col.regions=heat.colors(4),
 # Natural Earth
 # Fetch map and plot points 
 
-library("rnaturalearth")
-library("rnaturalearthdata")
+library(rnaturalearth)
+library(rnaturalearthdata)
 library(rgeos)
 
 bdne <- ne_countries(scale = "medium", returnclass = "sf", 

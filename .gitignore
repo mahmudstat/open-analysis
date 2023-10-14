@@ -7,3 +7,4 @@ gadm*
 house-prices/data/*
 .RDataTmp
 gadm36_BGD_gpkg/
+.zip

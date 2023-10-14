@@ -1,0 +1,5 @@
+﻿original_address,lat,lon,formatted,name,postcode,city,county,state,country,country_code,confidence,confidence_city_level,attribution,attribution_license,attribution_url
+Sylhet,24.89922,91.8685271,"Sylhet - 3100, Bangladesh",Sylhet,3100,Sylhet,Sylhet Sadar Upazila,Sylhet Division,Bangladesh,bd,1,1,© OpenStreetMap contributors,Open Database License,https://www.openstreetmap.org/copyright
+Netrokona,24.8855734,90.7332362,"Netrokona, Netrokona District, Bangladesh",Netrokona,,Netrokona,Netrokona District,Mymensingh Division,Bangladesh,bd,1,1,© OpenStreetMap contributors,Open Database License,https://www.openstreetmap.org/copyright
+Kurigram,25.8130134,89.6430518,"Kurigram, Kurigram Sadar Upazila, Bangladesh",Kurigram,,Kurigram,Kurigram Sadar Upazila,Rangpur Division,Bangladesh,bd,1,1,© OpenStreetMap contributors,Open Database License,https://www.openstreetmap.org/copyright
+Dinajpur,25.6260712,88.6346228,"Dinajpur - 5216, Bangladesh",Dinajpur,5216,Dinajpur,Dinajpur Sadar Upazila,Rangpur Division,Bangladesh,bd,1,1,© OpenStreetMap contributors,Open Database License,https://www.openstreetmap.org/copyright
