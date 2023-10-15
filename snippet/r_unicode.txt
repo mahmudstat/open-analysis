@@ -1,0 +1,10 @@
+# R: write unicodes this way: 
+
+# This list is usable: https://www.w3.org/TR/xml-entity-names/026.html
+
+"\u2600" ☀ 
+"\u267f"  ♿
+u26f7 ⛷
+
+u26f9 ⛹
+

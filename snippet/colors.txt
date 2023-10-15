@@ -27,3 +27,7 @@ scale_color_tron() and scale_fill_tron(): This palette is inspired by the colors
 
 Online Pallettes
 https://coolors.co/palettes/trending 
+
+scale_fill_brewer(palette = "PiYG")
+
+
