@@ -58,6 +58,6 @@ grid.arrange(ggplot() +
                labs(title = "Cadet Map (47B)")+
                theme(legend.position = "none"),
              spplot(bd_dist_map, "scc47b", col.regions = brewer.pal(n = 5, name = "Greens"),
-                    cuts=4, col='yellow', main='',
+                    cuts=4, col='transparent', main='',
                     sub='', scales=list(draw=T)),
              ncol = 2)
