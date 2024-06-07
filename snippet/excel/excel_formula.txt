@@ -1,8 +1,32 @@
-* Unique values
-
-UNIQUE(range)
+=VLOOKUP($B$1,'T12024'!$A$7:$AM$59,2,FALSE)
 
 
 * Preselected Value
 
 Data > Data Validation > Settings > List > Allow > Select Source
+
+GP from LG
+
+=IFS(R7="A+", 5, R7 = "A", 4, R7="A-", 3.5, R7="B", 3, R7="C", 2.5, R7="F", 0)
+
+LG from GP
+
+=IFS(R7 = 5, "A+", R7 = 4, "A", R7= 3.5, "A-", R7 = 3 ,"B", R7 = 2.5, "C", R7= "F", 0)
+
+Cont
+
+=IFS(Z7<2.5, "F", Z7<3, "C", Z7<3.5, "B", Z7<4, "A-", Z7<5, "A", Z7>=5, "A+")
+
+Grade from marks
+
+=IFS(Z7<39.5, "F", Z7<49.5, "C", Z7<59.5, "B", Z7<69.5, "A-", Z7<79.5, "A", Z7>=79.5, "A+")
+
+Position
+
+=RANK.EQ($AJ7, $AJ$7:$AJ$60) + COUNTIFS($AJ$7:$AJ$60, $AJ7, $AI$7:$AI$60, ">" &$AI7)
+
+AJ7 = Positon of this value
+$AJ$7:$AJ$60 = first criteria for position
+$AI$7:$AI$60 = 2nd criteria for position
+AI7 = Positon of this value
+

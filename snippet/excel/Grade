@@ -1,0 +1,18 @@
+=IFS(H4<39.5, "F", H4<49.5, "C", H4<59.5, "B", H4<69.5, "A-", H4<79.5, "A", H4>=79.5, "A+")
+
+
+## Pass/fail
+
+
+
+=if(or(C5/D5<0.4,C6/D6),0,1)
+
+=if(or(b3/b$2<0.4,c3/c$2<0.4, d3/d$2<0.4),"NO","YES")
+
+# Used
+
+=ARRAYFORMULA(if((d4:BN4)/(D$3:BN$3)<0.4,0,1))
+
+=sumif(BV4:EF4, ">=0") 
+
+sumif(or(bv4)

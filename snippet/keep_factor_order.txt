@@ -1,0 +1,2 @@
+df$derma <- factor(df$derma, levels = df$derma)
+

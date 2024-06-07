@@ -5,7 +5,6 @@ library(rvest)
 library(tidyverse)
 library(viridis)
 
-
 batting_src <- "https://www.espncricinfo.com/records/highest-career-batting-average-282911"
 
 
@@ -17,7 +16,7 @@ odi_batting_avg %>% top_n(10, Ave) %>%
   geom_col()+
   coord_flip()+
   theme(legend.position = "none")+
-  geom_text(aes(label=paste("Average = ", Ave, " & Runs =", Runs)), 
+  geom_text(aes(label= Ave), #paste("Average = ", Ave, " & Runs =", Runs)), 
             vjust=1, color="black", hjust = 1,
             position = position_dodge(0.5), size=3.5)
 
