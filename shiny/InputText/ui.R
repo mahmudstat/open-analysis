@@ -1,4 +1,7 @@
 fluidPage(
-  textInput("caption", "Tell Us Your Name", "Name"),
+  textInput(inputId = "caption", 
+            label = "Tell Us Your Name", 
+            value = "",
+            placeholder = "TEXT"),
   verbatimTextOutput("value")
 )
