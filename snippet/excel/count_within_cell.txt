@@ -1,0 +1,3 @@
+(LEN(E2)-LEN(SUBSTITUTE(E2,",",""))+1)
+
+# Counts no. of commas within E2
