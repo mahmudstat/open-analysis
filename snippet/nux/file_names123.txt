@@ -1,0 +1,6 @@
+ls -v | cat -n | while read n f; do mv -n "$f" "$n.ext"; done
+
+Start with custom index
+
+num=0; for i in *; do mv "$i" "$(printf '%04d' $num).${i#*.}"; ((num++)); done
+
