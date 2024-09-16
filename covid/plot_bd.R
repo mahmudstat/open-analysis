@@ -1,11 +1,19 @@
 ## Libraries
 
+install.packages("sp")
+
 library(sp)
 library(tidyverse)
 
 ## 2 for districts
 
-bd_dist <- readRDS("data/gadm36_BGD_2_sp.rds")
+# Download
+# https://gadm.org/download_country.html
+# UPDATED
+# https://geodata.ucdavis.edu/gadm/gadm3.6/Rsp/
+
+
+bd_dist <- readRDS("data/gadm36_BGD_2_sp.rds") # Base func, or tidyr::read_rds
 corona_dat <- read_csv("data/corona.csv")
 
 View(corona_dat)
@@ -17,7 +25,10 @@ spplot(bd_dist, "covid",col.regions=heat.colors(5),
 
 ## Plot using ggplot2
 
+
 bd_dist_gg <- fortify(bd_dist)
+
+#write_csv(bd_dist_gg, file = "data/bd_dist.csv")
 
 dim(bd_dist_gg)
 
@@ -61,12 +72,12 @@ spplot(bd_dist, "visit", col.regions=heat.colors(4),
 # Natural Earth
 # Fetch map and plot points 
 
-library(rnaturalearth)
-library(rnaturalearthdata)
-library(rgeos)
+#library(rnaturalearth)
+#library(rnaturalearthdata)
+# library(rgeos)
 
-bdne <- ne_countries(scale = "medium", returnclass = "sf", 
-                     country = "bangladesh")
+#bdne <- ne_countries(scale = "medium", returnclass = "sf", 
+#                     country = "bangladesh")
 
 class(bdne)
 
@@ -76,4 +87,5 @@ ggplot(data = bdne) + geom_sf(aes())+
   labs (x="Longitude", y = "Latitude") + ggtitle("Main")+
   scale_fill_viridis_c(option = "plasma", trans ="sqrt")
 
-## 
+## Advanced Course
+# https://www.seascapemodels.org/rstats/rspatial/2015/06/22/R_Spatial_course.html
