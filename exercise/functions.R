@@ -6,6 +6,8 @@ objs <- mget(ls("package:base"), inherits = TRUE)
 
 funs <- Filter(is.function, objs)
 
+length(funs)
+
 # No. of arguments of a function
 
 length(formals(funs$apply))
@@ -24,7 +26,7 @@ length(funs)
 
 funvar <- c()
 
-for (n in 1:1270) funvar[n] <- length(formals(funs[[n]]))
+for (n in 1:length(funs)) funvar[n] <- length(formals(funs[[n]]))
 
 head(funvar, 20)
 
@@ -42,7 +44,7 @@ names(fun3)
 
 fun_name <- c()
 
-for (n in 1:1270) fun_name[n] <- names(funs[n]) 
+for (n in 1:length(funs)) fun_name[n] <- names(funs[n]) 
 
 head(fun_name)
 
@@ -64,5 +66,9 @@ fun_name[funvar==max(funvar)]
 # See how many vars
 
 funvar[fun_name=="scan"]
+
+# Auto
+
+funvar[fun_name==fun_name[funvar==max(funvar)]]
 
 ## 22
