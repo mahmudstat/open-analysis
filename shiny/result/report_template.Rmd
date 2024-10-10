@@ -1,0 +1,62 @@
+---
+title: "Result Report"
+output: pdf_document
+params:
+  form: NA
+---
+
+```{r}
+library(knitr)
+library(dplyr)
+
+# Load existing student data
+load_student_data <- function() {
+  if (file.exists("student_info.csv")) {
+    return(read.csv("student_info.csv", stringsAsFactors = FALSE))
+  } else {
+    return(NULL)
+  }
+}
+
+# Load existing marks data
+load_marks_data <- function() {
+  if (file.exists("marks_data.csv")) {
+    return(read.csv("marks_data.csv", stringsAsFactors = FALSE))
+  } else {
+    return(data.frame(Roll = character(),
+                      Name = character(),
+                      House = character(),
+                      Bangla = numeric(),
+                      English = numeric(),
+                      Mathematics = numeric(),
+                      Science = numeric(),
+                      HSS = numeric(),
+                      DT = numeric(),
+                      WB = numeric(),
+                      LL = numeric(),
+                      AAC = numeric(),
+                      Religion = numeric(),
+                      stringsAsFactors = FALSE))
+  }
+}
+
+# Load the data
+student_data <- load_student_data()
+marks_data <- load_marks_data()
+
+# Filter marks for selected form
+filtered_marks <- marks_data[marks_data$Roll %in% student_data$Roll[student_data$Form == params$form], ]
+
+# Add total and percent columns
+filtered_marks$Total <- rowSums(filtered_marks[, 4:ncol(filtered_marks)], na.rm = TRUE)
+filtered_marks$Percent <- (filtered_marks$Total / (20 * (ncol(filtered_marks) - 3))) * 100
+
+# Define Form Master based on selected form
+form_master <- ifelse(params$form == "A", "Ishita", "Abdullah Al Mahmud")
+
+# Output the report
+knitr::kable(
+  filtered_marks,
+  caption = paste("Fortnightly Exam (2nd Term) - 2024\nForm Master:", form_master),
+  format = "latex"
+)

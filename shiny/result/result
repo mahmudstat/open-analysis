@@ -1,0 +1,74 @@
+Help me write a shiny app to collect student grades in different subjects. First let the user input studnet roll number, name, and house. The the user will be able to select a subcet from dropdown and insert the marks for all students. The subjects are Bangla, English, Mathematics, Science, HSS, WB, LL, AAC, Religion. Don't allow marks more than 20. The data to be saved in a csv file. When the app is reloaded, previuosly input data can be seen.
+
+Well, lets start over. First collect studnet info only. roll number, name, and house. User can create as many as they wish. Save it in a csv. When the app is reloaded, previuosly input data can be seen. Name this Initiate Input. Now create another app. This will let enter marks in different subjects. Subject can be chosen from dropdown. For each subject marks for all students can be inserted. Collect Info of the students from previous file. If no record is found, show message, "Fill up students information first."
+
+In first app, after one submission is made, reset input boxes.
+
+Remove save data option. Auto save with submit. Remove "Previously Entered Data:"
+
+App 1, add form variable. Make House dropdown.  Ti, Sj, Su
+
+Collect another info "Form". Make it dropdown Options are A, B. No preselected option in Form or House.
+
+Can you save after each input is made? AI failed. Go back to previous version.
+
+APP 2
+
+Save auto with submission. Don't show Save option. after one submission is made, reset input boxes. Don't show any default value.
+
+You removed student ids. Show box for Subject (dropdown), and list of students info. Marks for all students can be input at once for a subject. After a subject is done, save it and user can choose another subject.
+
+No, show a box for each student.
+
+student info not showing until a subject is chosen. show it already. Show submit button after the last input box. Omit "Save marks"
+
+Reset input box after submit.
+
+Omit studnet info from the above entry boxes. Keep entry box. Show the marks data which is updated after each submit. Create a column for each subject.
+
+Bring input boxes to the left, below subject dropdown. to the right, show input data, which is now below input boxes. Show submit button below input boxes.
+
+Reset input boxes after submit. Also take submit command through "Enter" press.
+
+There's an error. Warning: Error in bindEvent.default: Don't know how to handle object with class character. Can you fix?
+
+Warning: Error in observe: attempt to apply non-function
+
+there are errors. Go back to previous when submitting by pressing enter was not needed
+
+Not done. anyway forget. Just reset input boxes when a new subject is chosen.
+
+Not done. reset input boxes when a new subject (no input yet) is chosen. Also if a subject is chosen of which marks are already input, show them by default.
+
+Two other things. 1. Let user select "Form" column from dropdown. Put it before Subject dropdown. 2. Show House column after Name.
+
+Error
+undefined columns selected
+
+May be you need get House column from previous app.
+
+Still Error
+undefined columns selected
+
+Error: replacement has length zero
+
+Good. Now create a column in the rightmost which gives total of all subjects, followed by column for percent.
+
+Warning: Error in [.data.frame: undefined columns selected
+
+Error persists
+
+Add a subject DT after HSS. Now create a third app which will make a report Landscape mode.. Do it this way. Allow to select A or B "Form". Form is a column from previous apps.
+
+ In the middle put a logo (scc_logo.png), kept in same directory. height of img around 25 px. Below img, write Fortnightly Exam (2nd Term) - 2024. Next line: Result Sheet
+
+NExt line: Intake: 47, Class IX, Form: selcted from dropdown, Form Master: If B selected, "Abdullah Al Mahmud", otherwise "Ishita".
+
+Then show the App2 data. But to right add total of all subjects and percent.
+
+Then app3
+
+The logo is scc_logo.jpg. Keep thes things centered: logo, Fortnightly Exam (2nd Term) - 2024, Result Sheet. Keep the rest in one line. Fill the full page width. Finally export the entire doc as a pdf. Show option save as pdf.
+
+
+
