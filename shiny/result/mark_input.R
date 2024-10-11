@@ -22,7 +22,7 @@ load_marks_data <- function() {
                       Mathematics = numeric(),
                       Science = numeric(),
                       HSS = numeric(),
-                      DT = numeric(),  # Add DT column after HSS
+                      DT = numeric(),
                       WB = numeric(),
                       LL = numeric(),
                       AAC = numeric(),
@@ -45,7 +45,7 @@ ui <- fluidPage(
       selectInput("form", "Select Form", 
                   choices = c("", "A", "B")),
       selectInput("subject", "Select Subject", 
-                  choices = c("", "Bangla", "English", "Mathematics", "Science", "HSS", "DT", "WB", "LL", "AAC", "Religion")),  # Add DT to subject choices
+                  choices = c("", "Bangla", "English", "Mathematics", "Science", "HSS", "DT", "WB", "LL", "AAC", "Religion")),
       uiOutput("marks_input"),  # Dynamic UI for entering marks
       actionButton("submit", "Submit")  # Submit button
     ),
@@ -75,11 +75,14 @@ server <- function(input, output, session) {
     if (!is.null(student_data) && input$form != "") {
       filtered_data <- student_data[student_data$Form == input$form, ]
       if (input$subject != "" && nrow(filtered_data) > 0) {
+        # Get current marks for the selected subject
+        current_marks <- marks_data()
         lapply(1:nrow(filtered_data), function(i) {
-          current_marks <- marks_data()
-          marks_value <- current_marks[current_marks$Roll == filtered_data$Roll[i], input$subject]
+          roll <- filtered_data$Roll[i]
+          marks_value <- current_marks[current_marks$Roll == roll, input$subject]
+          # If marks exist, use them; otherwise set to NA
           numericInput(paste0("marks_", i), 
-                       label = paste("Marks for Roll", filtered_data$Roll[i]), 
+                       label = paste("Marks for Roll", roll), 
                        value = ifelse(length(marks_value) > 0, marks_value, NA), 
                        min = 0, 
                        max = 20)
@@ -91,16 +94,11 @@ server <- function(input, output, session) {
   # Reset input boxes when a new subject is chosen
   observeEvent(input$subject, {
     if (!is.null(student_data) && input$subject != "") {
-      reset_input_boxes()
+      # Input boxes will be automatically filled with existing marks, so no need to reset
+      # If you want to clear inputs on form change, you can uncomment the next line
+      # reset_input_boxes()
     }
   })
-  
-  # Function to reset input boxes
-  reset_input_boxes <- function() {
-    for (i in 1:nrow(student_data)) {
-      updateNumericInput(session, paste0("marks_", i), value = NA)
-    }
-  }
   
   # Submit marks for the selected subject
   observeEvent(input$submit, {
@@ -168,6 +166,13 @@ server <- function(input, output, session) {
       showNotification("Please select a form and a subject.", type = "warning")
     }
   })
+  
+  # Function to reset input boxes
+  reset_input_boxes <- function() {
+    for (i in 1:nrow(student_data)) {
+      updateNumericInput(session, paste0("marks_", i), value = NA)
+    }
+  }
   
   # Display updated marks data
   output$marks_table <- renderTable({
