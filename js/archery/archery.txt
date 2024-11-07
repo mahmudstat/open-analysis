@@ -1,0 +1,14 @@
+Create a wheel with 5 regions as already done. Create a button called "Start the Game"/ Clicking this will rotate the wheel at 3 rpm. Clicking anywhere on the wheel will stop the wheel and count point. Another button will show "Rotate again". In total there will be 5 shots. ALso show a Reset button. Assign 5 points for each shoot.
+
+Show these things
+
+Shots made:
+Shots left:
+Point earned in this shot:
+Total points
+
+> Show points of each region on the region. Make the speed 3 rotation per second.
+
+The points should be between 1 and 5. Make speed 180 rpm. Show the point assigned for each region on the region.
+
+The region should look like a pie chart as you did before. Choose these colors and points: green = 1, blue = 2, white = 3, red = 4, yellow = 5. Show the points properly on the region. ALso implement the speed (180 rpm) correctly.

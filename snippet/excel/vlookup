@@ -1,0 +1,6 @@
+# Cadet Name
+=VLOOKUP(A3,'T2-2024'!$b$13:$c$100,2,FALSE)
+
+# Marks
+
+=VLOOKUP(A3,'T2-2024'!$b$13:$br$100,7,FALSE)

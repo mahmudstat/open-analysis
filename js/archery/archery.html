@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archery Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="wheel">
+            <div class="segment green">1</div>
+            <div class="segment blue">2</div>
+            <div class="segment white">3</div>
+            <div class="segment red">4</div>
+            <div class="segment yellow">5</div>
+        </div>
+        <button id="start-btn">Start the Game</button>
+        <button id="rotate-again-btn" style="display: none;">Rotate Again</button>
+        <button id="reset-btn" style="display: none;">Reset</button>
+        <div id="score-board">
+            <p>Shots Made: <span id="shots-made">0</span></p>
+            <p>Shots Left: <span id="shots-left">5</span></p>
+            <p>Points Earned in this Shot: <span id="points-scored">0</span></p>
+            <p>Total Points: <span id="total-score">0</span></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
