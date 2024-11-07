@@ -1,44 +1,37 @@
 library(shiny)
 
-# Load existing data if the file exists, otherwise create an empty data frame
-load_data <- function() {
+# Load existing student data if the file exists
+load_student_data <- function() {
   if (file.exists("student_info.csv")) {
     return(read.csv("student_info.csv", stringsAsFactors = FALSE))
   } else {
-    return(data.frame(Roll = character(),
-                      Name = character(),
-                      Form = character(),
-                      House = character(),
-                      stringsAsFactors = FALSE))
+    return(data.frame(Roll = character(), Name = character(), House = character(), Form = character(), stringsAsFactors = FALSE))
   }
 }
 
-# Save the data to CSV
-save_data <- function(data) {
+# Save student data to a CSV file
+save_student_data <- function(data) {
   write.csv(data, "student_info.csv", row.names = FALSE)
 }
 
 # Define UI
 ui <- fluidPage(
-  titlePanel("Initiate Input - Student Information"),
+  titlePanel("Student Information Input"),
   
   sidebarLayout(
     sidebarPanel(
-      # Form layout for student information
-      textInput("roll", "Student Roll Number"),
-      textInput("name", "Student Name"),
-      
-      selectInput("form", "Form", 
-                  choices = c("", "A" = "A", "B" = "B")),
-      
-      selectInput("house", "House", 
-                  choices = c("", "Ti" = "Ti", "Sj" = "Sj", "Su" = "Su")),
-      
-      actionButton("submit", "Submit")
+      textInput("roll", "Roll Number"),
+      textInput("name", "Name"),
+      selectInput("house", "House", choices = c("", "Ti", "Sj", "Su")),
+      selectInput("form", "Form", choices = c("", "A", "B")),
+      actionButton("save", "Save"),
+      actionButton("delete", "Delete"),
+      br(), br(),
+      uiOutput("message")
     ),
     
     mainPanel(
-      tableOutput("table")
+      tableOutput("student_table")  # Display the student data table
     )
   )
 )
@@ -46,34 +39,82 @@ ui <- fluidPage(
 # Define server logic
 server <- function(input, output, session) {
   
-  # Reactive storage for student data
-  student_data <- reactiveVal(load_data())
+  # Reactive value to store student data
+  student_data <- reactiveVal(load_student_data())
   
-  # Add new student info on submit
-  observeEvent(input$submit, {
-    new_entry <- data.frame(Roll = input$roll,
-                            Name = input$name,
-                            Form = input$form,
-                            House = input$house,
-                            stringsAsFactors = FALSE)
-    
-    updated_data <- rbind(student_data(), new_entry)
-    student_data(updated_data)
-    
-    # Automatically save data on submit
-    save_data(updated_data)
-    showNotification("Data saved successfully!", type = "message")
-    
-    # Reset the input fields after submission
-    updateTextInput(session, "roll", value = "")
-    updateTextInput(session, "name", value = "")
-    updateSelectInput(session, "form", selected = "")  # Reset form dropdown
-    updateSelectInput(session, "house", selected = "")  # Reset house dropdown
+  # Render student table
+  output$student_table <- renderTable({
+    student_data()
   })
   
-  # Display student info table
-  output$table <- renderTable({
-    student_data()
+  # Message output
+  output$message <- renderUI({
+    if (!is.null(input$roll) && input$roll != "" && input$roll %in% student_data()$Roll) {
+      tags$p("Roll number already exists!", style = "color: red;")
+    }
+  })
+  
+  # Save student information
+  observeEvent(input$save, {
+    roll <- input$roll
+    name <- input$name
+    house <- input$house
+    form <- input$form
+    
+    # Check if all fields are filled
+    if (roll == "" || name == "" || house == "" || form == "") {
+      showNotification("Please fill out all fields.", type = "error")
+      return(NULL)
+    }
+    
+    # Check for duplicate roll number
+    current_data <- student_data()
+    existing_row <- which(current_data$Roll == roll)
+    
+    if (length(existing_row) > 0) {
+      # Update existing entry
+      current_data[existing_row, ] <- data.frame(Roll = roll, Name = name, House = house, Form = form, stringsAsFactors = FALSE)
+      showNotification("Student information updated.", type = "message")
+    } else {
+      # Add new entry if roll number doesn't exist
+      current_data <- rbind(current_data, data.frame(Roll = roll, Name = name, House = house, Form = form, stringsAsFactors = FALSE))
+      showNotification("New student added.", type = "message")
+    }
+    
+    # Save updated data
+    student_data(current_data)
+    save_student_data(current_data)
+    
+    # Clear input fields
+    updateTextInput(session, "roll", value = "")
+    updateTextInput(session, "name", value = "")
+    updateSelectInput(session, "house", selected = "")
+    updateSelectInput(session, "form", selected = "")
+  })
+  
+  # Delete student information
+  observeEvent(input$delete, {
+    roll <- input$roll
+    
+    if (roll == "" || !(roll %in% student_data()$Roll)) {
+      showNotification("Invalid roll number.", type = "error")
+      return(NULL)
+    }
+    
+    current_data <- student_data()
+    current_data <- current_data[current_data$Roll != roll, ]
+    
+    # Save updated data
+    student_data(current_data)
+    save_student_data(current_data)
+    
+    showNotification("Student entry deleted.", type = "message")
+    
+    # Clear input fields
+    updateTextInput(session, "roll", value = "")
+    updateTextInput(session, "name", value = "")
+    updateSelectInput(session, "house", selected = "")
+    updateSelectInput(session, "form", selected = "")
   })
 }
 
