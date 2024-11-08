@@ -3,6 +3,41 @@ library(ggmap)
 library(maps)
 library(mapdata)
 
+world_coordinates <- map_data("world") 
+
+# Quakes Data
+
+wquake <- read_csv("data/quakeworld.csv")
+
+p1 <- ggplot() + 
+  geom_map( 
+    data = world_coordinates, map = world_coordinates, 
+    aes(long, lat, map_id = region),
+    fill = "grey"
+  )+
+  theme(aspect.ratio = 0.6)
+
+p1 + 
+  geom_point(data = wquake, 
+             aes(x = longitude, 
+                 y = latitude,
+                # size = mag,
+                 color = mag))+
+  scale_color_gradient(high = "red", low = "yellow")+
+  labs(title = "Earthquakes around the World in 2024 (Jan to Sep)",
+       color = "Magnitude")+
+  theme(axis.text.x=ggplot2::element_blank(),
+        axis.ticks.x=ggplot2::element_blank(),
+        axis.text.y=ggplot2::element_blank(),
+        axis.ticks.y=ggplot2::element_blank(),
+        axis.title.x=element_blank(),
+        axis.title.y=element_blank(),
+        legend.position = "bottom",
+        panel.grid.major = element_blank(), # Remove grid lines
+        panel.grid.minor = element_blank())
+
+# Old
+
 w2hr <- map_data("world2Hires")
 
 ggplot() + geom_polygon(data = w2hr, aes(x=long, y = lat, group = group)) + 
