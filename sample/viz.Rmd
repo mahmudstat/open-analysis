@@ -1,0 +1,125 @@
+---
+title: "Data Vizualization Sample"
+author: "Mahmud"
+date: "2022-06-06"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+```{r, echo=FALSE}
+library(rvest) # for extracting data from web
+library(tidyverse)
+library(RColorBrewer)
+library(ggmap)
+library(maps)
+library(mapdata)
+```
+
+```{r, echo=FALSE}
+world_coordinates <- map_data("world") 
+wquake <- read_csv("../data/quakeworld.csv")
+```
+
+This document shows some extents made possible with the help of R programming in
+data visualization. 
+
+# Methods
+
+The charts in this page are generated within `R` programming language with the
+help of `Rmarkdown`. You can see the source code of this document along with 
+the codes of the chart [here (CLICK to see)]. 
+
+## Showing Location of Earthquakes around the World.
+
+The dots represent the colors, while the colors represent the magnitude of the 
+earthquakes; the redder an earthquake is, the greater it's magnitude. 
+
+```{r, echo=FALSE}
+p1 <- ggplot() + 
+  geom_map( 
+    data = world_coordinates, map = world_coordinates, 
+    aes(long, lat, map_id = region),
+    fill = "grey"
+  )+
+  theme(aspect.ratio = 0.6)
+
+p1 + 
+  geom_point(data = wquake, 
+             aes(x = longitude, 
+                 y = latitude,
+                # size = mag,
+                 color = mag))+
+  scale_color_gradient(high = "red", low = "yellow")+
+  labs(title = "Earthquakes around the World in 2024 (Jan to Sep)",
+       color = "Magnitude")+
+  theme(axis.text.x=ggplot2::element_blank(),
+        axis.ticks.x=ggplot2::element_blank(),
+        axis.text.y=ggplot2::element_blank(),
+        axis.ticks.y=ggplot2::element_blank(),
+        axis.title.x=element_blank(),
+        axis.title.y=element_blank(),
+        legend.position = "bottom",
+        panel.grid.major = element_blank(), # Remove grid lines
+        panel.grid.minor = element_blank())
+```
+
+\newpage
+
+## Showing Proportion of People on a Donut Chart
+
+This is a nicer alternative to Pie Chart, both showing percentage or part of 
+whole. 
+
+```{r, echo=FALSE}
+us_races <- tibble(
+  Race = c("White", "Black", "Multiracial", "Asian", "Others"), 
+  Percentage = c(61.6, 12.4, 10.2, 6, 9.8))
+us_races %>% ggplot(aes(2, Percentage, fill = Race))+
+  geom_col(position = "stack", width = 1)+
+  xlim(0.5, 2.5)+
+  coord_polar("y")+
+  theme_void()+
+  geom_text(aes(label = paste0(Percentage, " % \n ", Race)), 
+            position = position_stack(vjust = 0.5), size = 4)+
+  scale_fill_brewer(palette = 10)+
+  theme(legend.position="none")+
+  labs(title = "Races among US Population")
+```
+
+The plot reveals that most people in USA belong to White race, Black people
+come second among other. The Asians constitute least number of people. 
+
+\newpage
+
+## Producing Bar Diagram Using Web Data
+
+Now we use data from the internet to make our plots. We get the data on 
+most [goal scorers in soccer by country from Wikipedia](https://en.wikipedia.org/wiki/List_of_top_international_men%27s_football_goalscorers_by_country). The function `html_table()` from `rvest` makes the task
+very effortless. 
+
+```{r, echo=FALSE}
+src <- "https://en.wikipedia.org/wiki/List_of_top_international_men%27s_football_goalscorers_by_country"
+top_goals <- html_table(read_html(src), header = TRUE)[[1]]
+
+top_goals$Player=factor(top_goals$Player, 
+                        levels = top_goals$Player[order(top_goals$Goals)])
+
+top_goals <- pivot_longer(data = top_goals[1:10, 1:5], cols = c(Goals, Caps))
+
+top_goals %>% ggplot(aes(Player, value, fill = name))+
+  geom_bar(stat = "identity", position = "dodge")+
+  coord_flip()+
+  scale_fill_brewer(palette = "Spectral", name = "Type")+
+  labs(title = "Top Goal Scorers by Country", y = "No. of Goals/Caps", x = "Name")+
+  geom_text(aes(label=paste(value, name)), 
+            vjust=0.5, color="black", hjust = 1.1,
+            position = position_dodge(0.9), size=3.5)
+```
+
+From the chart, it becomes, 
