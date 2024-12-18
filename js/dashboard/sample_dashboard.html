@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV Dashboard</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    #dashboard {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .chart-container {
+      width: 45%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Dashboard</h1>
+  <input type="file" id="fileInput" accept=".csv" />
+  <div id="dashboard">
+    <div class="chart-container">
+      <canvas id="chart1"></canvas>
+    </div>
+    <div class="chart-container">
+      <canvas id="chart2"></canvas>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  
+  
+</body>
+</html>
