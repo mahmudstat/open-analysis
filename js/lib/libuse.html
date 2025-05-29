@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV Dashboard</title>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+</head>
+<body>
+<div id="chart"></div>
+
+  <script>
+const statlib = require('./statlib');
+
+const data = [1, 2, 3, 4, 5];
+console.log(statlib.mean(data)); // Output: 3
+
+const dataset = [
+  { name: 'A', value: 10 },
+  { name: 'B', value: 20 },
+  { name: 'C', value: 30 }
+];
+
+console.log(statlib.filter(dataset, row => row.value > 15)); // Filter rows
+console.log(statlib.select(dataset, ['name'])); // Select columns
+
+
+  </script>
+  
+  
+</body>
+</html>

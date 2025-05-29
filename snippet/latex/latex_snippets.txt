@@ -1,0 +1,10 @@
+\usepackage{float}
+\begin{table}[H])
+
+# Comments
+
+\iffalse
+
+THIS is a comment and \textbf{this is also ignored}
+
+\fi

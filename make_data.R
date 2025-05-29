@@ -15,7 +15,7 @@ hosp <- hosp[,-7]
 names(hosp) <- c("Date", "Revenue", "DocType", "Financial_Class", 
                  "Patient_Type", "Entry_Time", "Completion_Time", "ID")
 
-write.csv(hosp, file = "data/hospital.csv", )
+write.csv(hosp, file = "data/hospital.csv", row.names = FALSE)
 
 str(hosp)
 

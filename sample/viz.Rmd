@@ -1,12 +1,13 @@
 ---
 title: "Data Vizualization Sample"
-author: "Mahmud"
-date: "2022-06-06"
+author: "Abdullah Al Mahmud"
+date: "`r Sys.Date()`"
 output:
   pdf_document: default
   html_document: default
 ---
-
+\fontsize{12}{22}
+\selectfont
 
 ```{r setup, include=FALSE} 
 knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
@@ -19,6 +20,7 @@ library(RColorBrewer)
 library(ggmap)
 library(maps)
 library(mapdata)
+library(gridExtra) # To show plots side by side
 ```
 
 ```{r, echo=FALSE}
@@ -29,18 +31,15 @@ wquake <- read_csv("../data/quakeworld.csv")
 This document shows some extents made possible with the help of R programming in
 data visualization. 
 
-# Methods
-
-The charts in this page are generated within `R` programming language with the
-help of `Rmarkdown`. You can see the source code of this document along with 
-the codes of the chart [here (CLICK to see)]. 
 
 ## Showing Location of Earthquakes around the World.
 
 The dots represent the colors, while the colors represent the magnitude of the 
-earthquakes; the redder an earthquake is, the greater it's magnitude. 
+earthquakes; the redder an earthquake is, the greater it's magnitude. **The 
+plot can also show regions colored by specific criteria. **
 
-```{r, echo=FALSE}
+
+```{r, echo=FALSE, fig.height=4}
 p1 <- ggplot() + 
   geom_map( 
     data = world_coordinates, map = world_coordinates, 
@@ -67,33 +66,8 @@ p1 +
         legend.position = "bottom",
         panel.grid.major = element_blank(), # Remove grid lines
         panel.grid.minor = element_blank())
+
 ```
-
-\newpage
-
-## Showing Proportion of People on a Donut Chart
-
-This is a nicer alternative to Pie Chart, both showing percentage or part of 
-whole. 
-
-```{r, echo=FALSE}
-us_races <- tibble(
-  Race = c("White", "Black", "Multiracial", "Asian", "Others"), 
-  Percentage = c(61.6, 12.4, 10.2, 6, 9.8))
-us_races %>% ggplot(aes(2, Percentage, fill = Race))+
-  geom_col(position = "stack", width = 1)+
-  xlim(0.5, 2.5)+
-  coord_polar("y")+
-  theme_void()+
-  geom_text(aes(label = paste0(Percentage, " % \n ", Race)), 
-            position = position_stack(vjust = 0.5), size = 4)+
-  scale_fill_brewer(palette = 10)+
-  theme(legend.position="none")+
-  labs(title = "Races among US Population")
-```
-
-The plot reveals that most people in USA belong to White race, Black people
-come second among other. The Asians constitute least number of people. 
 
 \newpage
 
@@ -122,4 +96,61 @@ top_goals %>% ggplot(aes(Player, value, fill = name))+
             position = position_dodge(0.9), size=3.5)
 ```
 
-From the chart, it becomes, 
+### Interpretation of the Chart
+
+From the chart, it becomes evident that Cristiano Ronaldo scored the highest 
+number of goals, totaling 135. The plot also shows he is the one having played
+the maximum number of matches (217 caps). The adjacent bars reveal how the 
+number of goals compare with number of caps. It becomes immediately clear that
+Ference Puskas gets the credit of the highest scoring rate (84 goals in 85 
+matches). As a consequence, we may in fact need to plot the scoring rate to
+see the best performers. 
+
+\newpage
+
+## Showing Proportion of People on a Donut/Pie Chart
+
+This is a nicer alternative to Pie Chart, both showing percentage or part of 
+whole. 
+
+```{r, echo=FALSE}
+us_races <- tibble(
+  Race = c("White", "Black", "Multiracial", "Asian", "Others"), 
+  Percentage = c(61.6, 12.4, 10.2, 6, 9.8))
+d1 <- us_races %>% ggplot(aes(2, Percentage, fill = Race))+
+  geom_col(position = "stack", width = 1)+
+  xlim(0.5, 2.5)+
+  coord_polar("y")+
+  theme_void()+
+  geom_text(aes(label = paste0(Percentage, " % \n ", Race)), 
+            position = position_stack(vjust = 0.5), size = 4)+
+  scale_fill_brewer(palette = 10)+
+  theme(legend.position="none")+
+  labs(title = "Races among US Population")
+
+pie1 <- us_races %>% ggplot(aes(x="", y = Percentage, fill = Race))+
+  geom_bar(stat="identity")+
+  coord_polar("y")+
+  theme_void()+
+  theme(legend.position = "none")+
+  geom_text(aes(label = paste0(Percentage, " % \n ", Race)), 
+            position = position_stack(vjust = 0.5), 
+            size = 4, color = "black")+
+  scale_fill_brewer(palette = 2)
+
+grid.arrange(d1, pie1, ncol = 2)
+```
+
+### Interpretation of the Charts
+
+The plots reveal that most people in USA belong to White race, Black people
+come second among other. The Asians constitute least number of people. 
+
+# Methods Used in The Document
+
+The charts in this documents and the document itself are generated within `R` 
+programming language with the help of `Rmarkdown`. You can see the source code 
+of this document along with the codes of the chart [here (CLICK to see)](https://github.com/mahmudstat/open-analysis/blob/main/sample/viz.Rmd). 
+
+An updated (if any) version of this file available [here](https://github.com/mahmudstat/open-analysis/blob/main/sample/viz.pdf)
+

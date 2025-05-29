@@ -1,0 +1,40 @@
+I want the user to be able to create a list of products. The columns "product_id","Name","Unit_Price","Unit".
+
+In another app they can choose products from dropdown and write amount and then total price will be automatically calculated. Then they can print the summary as pdf.
+
+First app,
+
+* Give the title: Add New Product
+* Save when "Add Product" is clicked. Don't keep a separate Save button.
+* Don't keep default value for unit price or any variable.
+* Show previous values on the table by default.
+* Don't allow adding duplicate product id
+* After a product is added, reset all boxes
+* keep an edit option to edit product info
+* Keep inpuxt boxes empty before input.
+* Do this for edit. When edit in a row is clicked, load all the fields in input box. Don't ask for confirmation. It can be then added like new products.
+* For delete option, user can write product id in a another area, then click on delete
+to delete it.
+* Select product id automatically. It is the next integer in product id. So don't show this input box. Just ad it silently.
+* Don't show decimal in product_id. Show full integer
+* If any product is deleted, a product is missing. So to add new product id, search if any integer is missing between min and max, if misisng, start adding the missing ones
+
+App 2
+
+Show unit after product is selected. Also add option for adding a new product. Show
+it below the previous product. If it is clicked, the input boxes are reset. Also show total price in the bottom of the table.
+
+* Remove New Product button. If a product is added, the input boxes are reset.
+Show the summary on the right, not below, as now.
+
+* Total price is mentioned twice. Also one which shows calculated price is not properly aligned. It's hidden by table header.
+
+* Show taka sign instead of dollar. Keep Total Price within table margin, not to the right.
+
+* Let the user print the summary table.
+
+* Print only price summary. Remove product selection option outside print area
+
+I want to print only the summary part. The Product Selection
+ option in the left sidebar should be omitted from print option. When print is clicked, only the summary, starting from Selected Products:
+ to the Total Price and all products info should be printed. Help me achieve it.

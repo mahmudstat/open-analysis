@@ -6,7 +6,11 @@ objs <- mget(ls("package:base"), inherits = TRUE)
 
 funs <- Filter(is.function, objs)
 
-length(funs)
+# Primitive functions
+
+prim_funs <- Filter(is.primitive, objs)
+
+length(prim_funs)
 
 # No. of arguments of a function
 

@@ -19,3 +19,10 @@ for (j in 1:5) {
 
 f
 
+# Given a vector of names names = c("Ali", "Sara", "Tom", "Meera"), convert all names to lowercase using tolower() and add the prefix "Student: " to each name.
+
+names = c("Ali", "Sara", "Tom", "Meera")
+
+nml <- paste0("Student: ", tolower(names))
+
+

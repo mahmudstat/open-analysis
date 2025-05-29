@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Input</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #000; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .input-box { width: 80px; }
+    </style>
+</head>
+<body>
+
+    <h1>Exam Input</h1>
+    <label for="examType">Select Exam Type:</label>
+    <select id="examType">
+        <option value="FN">Fortnightly</option>
+        <option value="Final">Final</option>
+    </select>
+
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>SL</th>
+                <th>Roll</th>
+                <th>Name</th>
+                <th id="examHeader">Marks</th>
+            </tr>
+        </thead>
+        <tbody id="studentData">
+            <!-- Student data will be populated here -->
+        </tbody>
+    </table>
+
+    <button onclick="saveData()">Save</button>
+
+    <script>
+        const studentData = [
+            ["1", "1001", "Alice"],
+            ["2", "1002", "Bob"],
+            ["3", "1003", "Charlie"],
+        ]; // Replace with the CSV loading logic for `scc47.csv`
+
+        function renderTable(examType) {
+            const tbody = document.getElementById("studentData");
+            tbody.innerHTML = "";
+
+            studentData.forEach(([sl, roll, name]) => {
+                const row = document.createElement("tr");
+
+                const slCell = document.createElement("td");
+                slCell.textContent = sl;
+                row.appendChild(slCell);
+
+                const rollCell = document.createElement("td");
+                rollCell.textContent = roll;
+                row.appendChild(rollCell);
+
+                const nameCell = document.createElement("td");
+                nameCell.textContent = name;
+                row.appendChild(nameCell);
+
+                if (examType === "FN") {
+                    const fnCell = document.createElement("td");
+                    fnCell.innerHTML = `<input type="number" class="input-box" placeholder="FN Marks">`;
+                    row.appendChild(fnCell);
+                    document.getElementById("examHeader").textContent = "FN Marks";
+                } else {
+                    const cqCell = document.createElement("td");
+                    cqCell.innerHTML = `<input type="number" class="input-box" placeholder="CQ">`;
+                    row.appendChild(cqCell);
+
+                    const mcqCell = document.createElement("td");
+                    mcqCell.innerHTML = `<input type="number" class="input-box" placeholder="MCQ">`;
+                    row.appendChild(mcqCell);
+
+                    const prtCell = document.createElement("td");
+                    prtCell.innerHTML = `<input type="number" class="input-box" placeholder="Practical">`;
+                    row.appendChild(prtCell);
+
+                    document.getElementById("examHeader").textContent = "Final Exam Marks";
+                }
+
+                tbody.appendChild(row);
+            });
+        }
+
+        document.getElementById("examType").addEventListener("change", function() {
+            renderTable(this.value);
+        });
+
+        function saveData() {
+            const examType = document.getElementById("examType").value;
+            const table = document.getElementById("studentData");
+            const rows = Array.from(table.rows);
+
+            const csvData = [["SL", "Roll", "Name", ...(examType === "FN" ? ["FN"] : ["CQ", "MCQ", "Practical"])]];
+
+            rows.forEach(row => {
+                const rowData = Array.from(row.cells).map(cell => cell.children[0] ? cell.children[0].value : cell.textContent);
+                csvData.push(rowData);
+            });
+
+            const csvContent = "data:text/csv;charset=utf-8," + csvData.map(e => e.join(",")).join("\n");
+            const link = document.createElement("a");
+            link.setAttribute("href", encodeURI(csvContent));
+            link.setAttribute("download", examType === "FN" ? "FN.csv" : "Final.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            alert("Data saved!");
+        }
+
+        // Initialize table for the default exam type (FN)
+        renderTable("FN");
+    </script>
+</body>
+</html>

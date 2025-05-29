@@ -1,4 +1,22 @@
+
+Replace space with hyphen
+
 for file in *' '*
 do
   mv -- "$file" "${file// /-}"
 done
+
+to Lower
+
+rename 'y/A-Z/a-z/' *
+
+
+Replace .- with blank
+rename 's/\.\-//' *.*
+
+To change "." to "-"
+rename 's/\. /-/' *
+
+
+rename 's/\-html/.html/' *
+

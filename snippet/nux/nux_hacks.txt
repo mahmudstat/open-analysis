@@ -1,0 +1,30 @@
+# MKV to mp3
+
+for file in *.mkv; do
+    ffmpeg -i "$file" "${file%.mkv}.mp3"
+done
+
+# To change "." to "-"
+
+rename 's/\./-/' *
+rename 's/\_/-/' *
+
+# Replace space with hyphen
+
+for file in *' '*
+do
+  mv -- "$file" "${file// /-}"
+done
+
+
+# To lower
+
+rename 'y/A-Z/a-z/' *
+
+
+Loop
+wget http://www.ummahrc.com/omar-series-bangla/ep{1..29}.mp4
+
+wget http://10.100.100.12/data1/TVSERIES/ENGLISHSERIES/From%20Season%201/From.S01E0{1..10}.1080p.WEBRip.x265-RARBG.mp4
+
+https://www.subtitlecat.com/subs/826/From%20%282022%29%20-%20S01E0{3..10}%20-%20eng.html

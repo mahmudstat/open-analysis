@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Setup</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        label, input { margin-bottom: 10px; display: block; }
+    </style>
+</head>
+<body>
+    <h1>Exam Setup</h1>
+    <form id="examSetupForm">
+        <label for="subjectName">Subject Name:</label>
+        <input type="text" id="subjectName" required>
+
+        <h2>Fortnightly Exam</h2>
+        <label for="FNT">Mark:</label>
+        <input type="number" id="FNT" required>
+        <label for="FNP">Pass Mark:</label>
+        <input type="number" id="FNP" required>
+
+        <h2>Final Exam</h2>
+        <label for="FinalCQT">Final CQ Mark:</label>
+        <input type="number" id="FinalCQT" required>
+        <label for="FinalCQTP">Final CQ Pass Mark:</label>
+        <input type="number" id="FinalCQTP" required>
+
+        <label for="FinalMCQT">Final MCQ Mark:</label>
+        <input type="number" id="FinalMCQT" required>
+        <label for="FinalMCQTP">Final MCQ Pass Mark:</label>
+        <input type="number" id="FinalMCQTP" required>
+
+        <label for="FNPRT">Final Practical Mark:</label>
+        <input type="number" id="FNPRT" required>
+        <label for="FNPRTP">Final Practical Pass Mark:</label>
+        <input type="number" id="FNPRTP" required>
+
+        <button type="submit">Save Exam Setup</button>
+    </form>
+
+    <button onclick="downloadCSV()">Download CSV</button>
+
+    <script>
+        // Initialize IndexedDB
+        let db;
+        const request = indexedDB.open("examSetupDB", 1);
+
+        request.onupgradeneeded = function(event) {
+            db = event.target.result;
+            db.createObjectStore("examSetup", { keyPath: "subjectName" });
+        };
+
+        request.onsuccess = function(event) {
+            db = event.target.result;
+        };
+
+        request.onerror = function(event) {
+            console.error("Database error:", event.target.errorCode);
+        };
+
+        // Save new subject to IndexedDB
+        function saveToDB(data) {
+            const transaction = db.transaction(["examSetup"], "readwrite");
+            const store = transaction.objectStore("examSetup");
+            store.add(data);
+            transaction.oncomplete = function() {
+                console.log("Data saved successfully.");
+            };
+            transaction.onerror = function(event) {
+                console.error("Data save failed:", event.target.error);
+            };
+        }
+
+        // Collect form data and save to IndexedDB
+        document.getElementById("examSetupForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const subjectData = {
+                subjectName: document.getElementById("subjectName").value,
+                FNT: document.getElementById("FNT").value,
+                FNP: document.getElementById("FNP").value,
+                FinalCQT: document.getElementById("FinalCQT").value,
+                FinalCQTP: document.getElementById("FinalCQTP").value,
+                FinalMCQT: document.getElementById("FinalMCQT").value,
+                FinalMCQTP: document.getElementById("FinalMCQTP").value,
+                FNPRT: document.getElementById("FNPRT").value,
+                FNPRTP: document.getElementById("FNPRTP").value
+            };
+
+            // Save to IndexedDB and reset form
+            saveToDB(subjectData);
+            document.getElementById("examSetupForm").reset();
+            alert("Subject saved successfully!");
+        });
+
+        // Download CSV from IndexedDB data
+        async function downloadCSV() {
+            const transaction = db.transaction(["examSetup"], "readonly");
+            const store = transaction.objectStore("examSetup");
+
+            const allData = [];
+            store.openCursor().onsuccess = function(event) {
+                const cursor = event.target.result;
+                if (cursor) {
+                    allData.push(cursor.value);
+                    cursor.continue();
+                } else {
+                    // Convert data to CSV
+                    let csvContent = "Subject,FN,FNP,FinalCQT,FinalMCQT,FNPRT,FinalCQTP,FinalMCQTP,FNPRTP\n";
+                    allData.forEach(data => {
+                        csvContent += `${data.subjectName},${data.FNT},${data.FNP},${data.FinalCQT},${data.FinalMCQT},${data.FNPRT},${data.FinalCQTP},${data.FinalMCQTP},${data.FNPRTP}\n`;
+                    });
+
+                    // Trigger download
+                    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+                    const link = document.createElement("a");
+                    link.href = URL.createObjectURL(blob);
+                    link.setAttribute("download", "setup.csv");
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }
+            };
+        }
+    </script>
+</body>
+</html>

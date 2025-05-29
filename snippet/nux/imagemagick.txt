@@ -1,0 +1,8 @@
+
+# Converts all webp to jpg
+
+for file in *.webp; do convert $file "`basename $file .webp`.jpg"; done
+
+# This might work too
+
+convert *.webp *.jpg

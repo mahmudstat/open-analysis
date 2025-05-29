@@ -18,7 +18,7 @@ gen_pw <- function (nC = 8, nS = 1, nD = 1, nL = 1, nl = 1){
 
 gen_pw(1, nS = 0)
 
-pw <- gen_pw (10, ns=0)
+pw <- gen_pw (10, nS=0)
 
 pw
 

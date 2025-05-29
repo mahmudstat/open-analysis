@@ -16,9 +16,10 @@ geocode_47b <- read_csv("data/geocodes_47b.csv")
 
 par(mfrow=c(1,2))
 
-spplot(bd_dist_map, "scc47b", col.regions = brewer.pal(n = 5, name = "Greens"),
+p3 <- spplot(bd_dist_map, "scc47b", col.regions = brewer.pal(n = 5, name = "Greens"),
        cuts=4, col='transparent', main='Cadet Map (47B)',
        sub='', scales=list(draw=T))
+
 
 dev.off()
 

@@ -1,0 +1,41 @@
+I have students info in a csv file (scc47.csv) The file contains SL, Roll, Name, House and Form
+
+Now create html file where exam setup (exam_setup.html) can be done. User can add a subject name, 
+mark in fornightly exam (FNT), its pass mark (FNP), mark in final exam CQ (FinalCQT), 
+final exam MCQ (FinalMCQT) and final practical (FNPRT) along with their pass 
+marks (FinalCQTP, FinalMCQTP, FNPRTP). The input information would be saved 
+in a csv (Subject, FN, FNP, FinalCQT, FinalMCQT, FNPRT, FinalCQTP, FinalMCQTP, FNPRTP).
+
+Now create exam input file (exam_input.html). Here user can
+
+i. select exam type (Fornightly (FN) or Final)
+ii. If FN is selected only one input box for all students will be given. To the 
+left of inpout boxes SL, Roll, Name will be shown. Show Save button below the
+input setup. These info will be saved as FN.csv.
+iii. If Final is selected, show input boxes for FinalCQT, FinalMCQT, FNPRT after
+studnet info. 
+Save this file as Final.csv
+
+Do this now. I'll tell you the next part later. 
+
+> exam_setup.htm; when a subject is submitted, save it silently to the working directory and reset the input box for next subject add.
+
+> When save exam setup is clicked, nothing happens, It should create (setup.csv) file and reset input boxes.
+
+> When the next subject is input it should save the info to the csv file (setup.csv) silently.
+
+> Not working. Well, assume setup.csv is already created with the required column names.
+SO no download trigger and button. Just save values silently when Save button is clicked.
+Append the values if already some values exist.
+
+New subject not saving
+
+Not done. Is it easier in shiny than in js?
+
+Reset the input boxes when one subject is done and show the udpated table
+
+After save is cliked, teh updted table should be visible. And only subjet name is reset. Reset all input boxes.
+
+Show edit/delete option for each row. Clicking Edit would show the existing values on input boxes. Delete will ask to confirm and if yes is cliked, deletes the row.
+
+No edit/delete button seen. Show it to the right of last entry for each subject

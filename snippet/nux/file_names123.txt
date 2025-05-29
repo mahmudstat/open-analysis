@@ -1,4 +1,4 @@
-ls -v | cat -n | while read n f; do mv -n "$f" "$n.ext"; done
+ls -v | cat -n | while read n f; do mv -n "$f" "$n.jpg"; done
 
 Start with custom index
 

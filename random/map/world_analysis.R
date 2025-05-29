@@ -4,7 +4,7 @@ library(maps)
 library(mapdata)
 
 world_coordinates <- map_data("world") 
-
+options( scipen = 999 )
 # Quakes Data
 
 wquake <- read_csv("data/quakeworld.csv")
@@ -13,7 +13,7 @@ p1 <- ggplot() +
   geom_map( 
     data = world_coordinates, map = world_coordinates, 
     aes(long, lat, map_id = region),
-    fill = "grey"
+    fill = "green"
   )+
   theme(aspect.ratio = 0.6)
 
@@ -35,6 +35,29 @@ p1 +
         legend.position = "bottom",
         panel.grid.major = element_blank(), # Remove grid lines
         panel.grid.minor = element_blank())
+
+# World Cities
+
+p1 + 
+  geom_point(data = filter(world.cities, pop > 1000000), 
+             aes(x = long, 
+                 y = lat,
+                 alpha = 0.9,
+                 size = pop,
+                 color = pop))+
+  scale_color_gradient(high = "red", low = "orange")+
+  labs(title = "Cities of the World with Population More Than 1 Million",
+       size = "Population")+
+  theme(axis.text.x=ggplot2::element_blank(),
+        axis.ticks.x=ggplot2::element_blank(),
+        axis.text.y=ggplot2::element_blank(),
+        axis.ticks.y=ggplot2::element_blank(),
+        axis.title.x=element_blank(),
+        axis.title.y=element_blank(),
+        legend.position = "bottom",
+        panel.grid.major = element_blank(), # Remove grid lines
+        panel.grid.minor = element_blank())+
+  guides(color = "none", alpha = "none")
 
 # Old
 
