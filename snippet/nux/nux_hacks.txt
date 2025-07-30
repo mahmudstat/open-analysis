@@ -1,3 +1,7 @@
+# Replace new line with double new line
+
+sed -i 's/$/\n/' file.txt
+
 # MKV to mp3
 
 for file in *.mkv; do
