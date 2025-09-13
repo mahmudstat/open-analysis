@@ -1,6 +1,7 @@
 # Source
 
 # Libs
+library(tidyverse)
 
 library(sf)
 library(raster)
@@ -161,3 +162,24 @@ values(van_raster) <- rnorm(195, mean = 0, sd = 1)
 
 plot(van_raster)
 
+### Read Local Data ####
+
+icbc_crash <- read_csv("course/r-gis-crash-course/data/ICBC_cyclist_crashes.csv")
+
+View(icbc_crash)
+
+# Check Missing Values
+
+is.na(icbc_crash$Latitude) %>% summary()
+
+is.na(icbc_crash$Longitude) %>% summary()
+
+# Remove missing
+
+icbc_crash <- filter(icbc_crash, !is.na(Latitude))
+
+icbc_sf <- st_as_sf(icbc_crash, 
+                    coords = c("Longitude", "Latitude"),
+                    crs = 4326)
+
+plot(icbc_sf["Region"], pch = 19)
