@@ -1,0 +1,13 @@
+{
+  "name": "drawing-app",
+  "version": "1.0.0",
+  "description": "A simple drawing application",
+  "main": "src/main.js",
+  "scripts": {
+    "build": "mkdir -p build && cp -r src/* build/",
+    "clean": "rm -rf build/",
+    "package": "npm run build && mkdir -p package/drawing-app_1.0.0/usr/share/drawing-app && cp -r build/* package/drawing-app_1.0.0/usr/share/drawing-app/"
+  },
+  "author": "Your Name",
+  "license": "MIT"
+}

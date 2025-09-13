@@ -1,0 +1,3 @@
+13build/* /usr/share/drawing-app/
+debian/drawing-app.desktop /usr/share/applications/
+src/icons/icon.png /usr/share/icons/hicolor/48x48/apps/drawing-app.png

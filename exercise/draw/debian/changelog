@@ -1,0 +1,5 @@
+drawing-app (1.0.0-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- Mahmud <almahmud.sbi@gmail.com>  $(date -R)s

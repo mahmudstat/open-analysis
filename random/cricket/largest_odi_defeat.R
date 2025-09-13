@@ -1,12 +1,21 @@
-library(pacman)
-
-p_load(tidyverse, rvest, RColorBrewer) 
-
+library(tidyverse)
 library(rvest)
+library(magrittr)
+library(RColorBrewer)
+
+
+library(httr)
 
 src <- "https://www.espncricinfo.com/records/largest-margin-of-victory-by-runs-283902"
 
-largest_odi_wins <- html_table(read_html(src), header = TRUE)[[1]] %>% 
+res <- httr::GET(src, httr::user_agent("Mozilla/5.0"))
+
+page <- read_html(res)
+tbls <- page %>% html_table(fill = TRUE)
+largest_odi_wins <- tbls[[1]]
+
+
+largest_odi_wins <- html_table(read_html("scrapedpage.html"), header = TRUE)[[1]] %>% 
   top_n(10, Margin) %>% 
   separate_wider_delim(cols = Margin, names = c("Runs", "resid"), 
                        cols_remove = FALSE, delim = " ") %>% 

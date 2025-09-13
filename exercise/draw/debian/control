@@ -1,0 +1,13 @@
+Source: drawing-app
+Section: graphics
+Priority: optional
+Maintainer: Your Name <your.email@example.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.6.0
+Homepage: https://example.com
+
+Package: drawing-app
+Architecture: all
+Depends: ${misc:Depends}, electron (>= 20.0.0) | node-webkit | chromium-browser
+Description: Simple drawing application
+ A lightweight drawing application built with web technologies.

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Drawing App
+Comment=Simple drawing application
+Exec=xdg-open /usr/share/drawing-app/index.html
+Icon=drawing-app
+Terminal=false
+Type=Application
+Categories=Graphics;

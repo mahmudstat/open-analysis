@@ -8,7 +8,7 @@ library(stringr)
 # 1. Get the list of packages as a data frame
 url <- "https://cran.r-project.org/web/packages/available_packages_by_date.html"
 
-# Read the HTML content from the URL
+#### Read the HTML content from the URL ####
 cran_html <- read_html(url)
 
 # Extract the table from the HTML and convert it to a data frame
@@ -55,7 +55,7 @@ grouped_packages %>% ggplot(aes(Day, count, fill = Year))+
 
 
 ## Group by Year, Month 
-# Extract Last year
+# Extract Last Two years
 packages_df %>%
   dplyr::group_by(Year, Month) %>%
   dplyr::summarize(

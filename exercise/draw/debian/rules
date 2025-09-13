@@ -1,0 +1,42 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+override_dh_auto_clean:
+	npm run clean || true
+
+override_dh_auto_build:
+	npm run build || true
+
+override_dh_auto_install:
+	# Create directory structure
+	mkdir -p debian/drawing-app/usr/share/drawing-app
+	mkdir -p debian/drawing-app/usr/share/applications
+	mkdir -p debian/drawing-app/usr/share/icons/hicolor/48x48/apps/
+
+	# Copy application files - check if build directory exists
+	if [ -d "build" ]; then \
+		cp -r build/* debian/drawing-app/usr/share/drawing-app/; \
+	else \
+		echo "Warning: build directory not found, using src directly"; \
+		cp -r src/* debian/drawing-app/usr/share/drawing-app/; \
+	fi
+
+	# Copy desktop file
+	cp debian/drawing-app.desktop debian/drawing-app/usr/share/applications/ 2>/dev/null || \
+		echo "Warning: desktop file not found, creating default"; \
+		echo "[Desktop Entry]\nVersion=1.0\nName=Drawing App\nExec=xdg-open /usr/share/drawing-app/index.html\nIcon=drawing-app\nType=Application\nCategories=Graphics;" > debian/drawing-app/usr/share/applications/drawing-app.desktop
+
+	# Copy icon
+	if [ -f "src/icons/icon.png" ]; then \
+		cp src/icons/icon.png debian/drawing-app/usr/share/icons/hicolor/48x48/apps/drawing-app.png; \
+	else \
+		echo "Warning: icon not found, creating placeholder"; \
+		convert -size 48x48 xc:blue -fill white -pointsize 20 -gravity center -annotate +0+0 "D" debian/drawing-app/usr/share/icons/hicolor/48x48/apps/drawing-app.png 2>/dev/null || \
+		touch debian/drawing-app/usr/share/icons/hicolor/48x48/apps/drawing-app.png; \
+	fi
+
+# Disable dh_install since we're handling installation manually
+override_dh_install:
+	echo "Skipping dh_install - manual installation already done"
