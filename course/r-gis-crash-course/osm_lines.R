@@ -59,11 +59,31 @@ motijheel_bb <- opq(bbox = motijheel) %>%
 motijheel_lines <- osmdata_sf(motijheel_bb)$osm_lines
 
 set.seed(100)
-motijheel_lines$saefty <- sample(c("High", "Low", "Medium"), nrow(motijheel_lines), replace = TRUE)
+motijheel_lines$safety <- sample(c("High", "Low", "Medium"), nrow(motijheel_lines), replace = TRUE)
 
 # Plot roads colored by safety level
 ggplot(motijheel_lines) +
-  geom_sf(aes(color = saefty), size = 1) +
+  geom_sf(aes(color = safety), size = 1) +
   scale_color_manual(values = c("High" = "green", "Medium" = "orange", "Low" = "red")) +
-  theme_minimal() +
+  theme_classic() +
   ggtitle("Road Safety in Motijhel (Simulated Data)")
+
+# Quantitative Criteria #### 
+
+motijheel_lines$n_school <- sample(10, 
+                                   nrow(motijheel_lines), 
+                                   replace = TRUE)
+
+plot(motijheel_lines["n_school"], lwd=2)
+
+# GGPLOT
+ggplot(motijheel_lines) +
+  geom_sf(aes(color = n_school), size = 1) +
+  theme_classic() +
+  scale_color_gradient(high = "green", low = "yellow")+
+  labs(title = "Number of School at Motijhel and Surrounding Areas",
+       caption = "Simulated Data",
+       color = "Number of School")+
+  theme(axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        axis.title = element_blank())
