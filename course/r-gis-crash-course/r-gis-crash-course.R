@@ -2,7 +2,7 @@
 
 # Libs
 library(tidyverse)
-
+library(mapview)
 library(sf)
 library(raster)
 library(crsuggest)
@@ -183,3 +183,82 @@ icbc_sf <- st_as_sf(icbc_crash,
                     crs = 4326)
 
 plot(icbc_sf["Region"], pch = 19)
+
+possible_crs <- suggest_crs(icbc_sf, units = "m", limit = 20)
+
+possible_crs
+
+icbc_crash_sf_proj <- st_transform(icbc_sf, crs = 3005)
+st_crs (icbc_crash_sf_proj)
+
+## See only Vancouver
+
+icbc_crash_van <- icbc_sf %>% 
+  filter(`Municipality Name` == "VANCOUVER")
+
+plot(icbc_crash_van["Cyclist Flag"])
+
+possible_crs_van <- suggest_crs(icbc_crash_van)
+
+icbc_crash_van_proj <- st_transform(icbc_crash_van, crs = 26910)
+
+plot(icbc_crash_van_proj) # plot all
+
+plot(icbc_crash_van_proj["Date Of Loss Year"]) # Plot a column
+
+
+# Shape Files #### 
+van_boundary <- read_sf("course/r-gis-crash-course/data/CoV_boundary.shp")
+
+van_boundary
+
+plot(van_boundary)
+
+plot(van_boundary["Type"])
+
+# OpenStreetMaps #### 
+
+van_bb <- getbb("Vancouver BC")
+
+opq_van <- opq(bbox = van_bb)
+
+osm_van <- add_osm_feature(opq = opq_van,
+                           key = "highway")
+osm_van_sf <- osmdata_sf(osm_van)
+
+gulistan <- getbb("Gulistan") |>
+  opq() |>
+  add_osm_feature(key = "highway") |>
+  osmdata_sf()
+
+gulistan_lines <- gulistan$osm_lines
+  
+gulistan_lines
+
+gulistan_network <- st_transform(gulistan_lines, crs = 26910)
+
+plot(gulistan_network["highway"], key.pos = 1)
+
+# For more, see `osm_lines.R`
+
+# Map View #### 
+
+mapview::mapview(van_boundary, zcol = "Popultn")
+
+# Attribute Query ####
+
+bicycle <- gulistan_lines %>% 
+  filter(highway == "cycleway")
+
+# or
+bicycle <- gulistan_lines %>% 
+ filter(highway=="cycleway" | (highway=="path"&bicycle=="yes") | (highway=="path"&bicycle=="designated") | (highway=="footway"&bicycle=="yes") | (highway=="footway"&bicycle=="designated"))
+
+mapview(bicycle)
+
+# Pedestrian
+View(gulistan_lines)
+gulistan_ped <- gulistan_lines |>
+  filter(highway == "pedestrian")
+
+mapview(gulistan_ped)
