@@ -103,9 +103,9 @@ st_point(c(5,2,1), dim = "XYM") # 3D
 st_point(c(5,2,3,1)) # XYZM, with extra variable
 
 
-multipoin_matrix <- rbind(c(5,2), c(1,3), c(3,4), c(3,2))
+multipoint_matrix <- rbind(c(5,2), c(1,3), c(3,4), c(3,2))
 
-st_multipoint(multipoin_matrix)
+st_multipoint(multipoint_matrix)
 
 # Multi Line ####
 
@@ -139,10 +139,35 @@ st_polygon((polygon_with_hole_list))
 
 # To plot
 
-polygon_hole_sf <- st_polygon(polygon_with_hole_list)
+polygon_sf <- st_polygon(polygon_with_hole_list)
 
 plot(polygon_hole_sf, col = "blue")
 
 # How to col() hole?
+# Use gg, `gg_hole.R`
 
+# PlogyGon Hole Mapview ####
+
+polygon_sfc <- st_sfc(polygon_sf)
+
+mapview::mapview(polygon_sfc) # NO CRS, so not good
+
+## MULTILINESTRING #### 
+
+multistring_list <- list(rbind(c(1, 5), c(4, 4), c(4, 1), c(2, 2), c(3, 2)), 
+                         rbind(c(1, 2), c(2, 4)))
+
+st_multilinestring(multistring_list) |>
+  plot(col = "tomato", lwd = 3)
+
+multipolygon_list = list(list(rbind(c(1, 5), c(2, 2), c(4, 1), c(4, 4), c(1, 5))),
+                         list(rbind(c(0, 2), c(1, 2), c(1, 3), c(0, 3), c(0, 2))))
+
+st_multipolygon(multipolygon_list) |> plot()
+
+## GEOMETRYCOLLECTION
+
+geometrycollection_list = list(st_multipoint(multipoint_matrix),
+                               st_linestring(linestring_matrix))
+st_geometrycollection(geometrycollection_list) |> plot()
 
