@@ -1,0 +1,74 @@
+year,month,day,wday,NEWS,order,Time,district,upazilla,Location,Road,"Road
+Type",Cause,"Responsible
+Vehicle","Victim
+Vehicle",killed,injured,Address,"Accident 
+ID"
+2025,1,1,Wed,,1,9:00,Narayanganj,Rupganj,"jelepara, vulta",Rupasi-Kanchan,Upazilla Road,Lost control,Car,,2,3,"jelepara, vulta, Rupganj, Narayanganj",2025-1-1
+2025,1,1,Wed,,2,7:00,Narayanganj,Rupganj,"jelepara, vulta",Rupasi-Kanchan,Upazilla Road,Smash,Trolley,Bike,1,2,"jelepara, vulta, Rupganj, Narayanganj",2025-1-1
+2025,1,1,Wed,,3,4:00,Faridpur,Bhanga,"Pulia, Chandra",Dhaka-Bhanga Expressway,Highway,Clash,Bus-Truck,Bus-Truck,2,3,"Pulia, Chandra, Bhanga, Faridpur",2025-1-1
+2025,1,1,Wed,,4,11:00,Naogaon,mohadevpur,khuntir mor,mohadevpur-najirpur,Local,Clash,Bus-Bike,Bus-Bike,2,4,"khuntir mor, mohadevpur, Naogaon",2025-1-1
+2025,1,1,Wed,,5,23:00,Pabna,Pabna,Yakub Filling Stattion,Bypass,Highway,Clash,Bike-CNG,Bike-CNG,1,0,"Yakub Filling Stattion, Pabna, Pabna",2025-1-1
+2025,1,1,Wed,,6,12:00,Satkhira,Tala,trish mile,Khulna-Satkhira Highway,Highway,Smash,Bus,Van,1,0,"trish mile, Tala, Satkhira",2025-1-1
+2025,1,1,Wed,,7,22:00,Mymensingh,Fulpur,Chanpur Bridge,Chanpur Bridge,Local,Lost control,Votvoti,,1,,"Chanpur Bridge, Fulpur, Mymensingh",2025-1-1
+2025,1,1,Wed,,8,12:00,Dinajpur,Khansama,Khansama police station,Khansama police station,Upazilla Road,,,,1,,"Khansama police station, Khansama, Dinajpur",2025-1-1
+2025,1,1,Wed,,9,18:00,Rajshahi,Mohonpur,keshorhat,Rajshahi-Naogaon Highway,Highway,Lost control,Bike,Bike,3,0,"keshorhat, Mohonpur, Rajshahi",2025-1-1
+2025,1,2,Thu,,1,8:00,Khagrchari,Khagrchari,Alu Tila,Alu tila,Highway,Smash,Truck,Bike,1,1,"Alu Tila, Khagrchari, Khagrchari",2025-1-2
+2025,1,2,Thu,,2,7:00,Chuadanga,Alamdanga,Kalidaspur,Alamdanga-Kushtia,Upazilla Road,Lost control,Bike,Bike,1,1,"Kalidaspur, Alamdanga, Chuadanga",2025-1-2
+2025,1,2,Thu,,3,7:00,Khagrchari,Ramgarh,Zero Point,Khagrchari-chattogram highway,Highway,Smash,Truck,Bike,1,1,"Zero Point, Ramgarh, Khagrchari",2025-1-2
+2025,1,2,Thu,,4,23:00,Cox's Bazar,Eidgao,Napitkhali,Cox's Bazar-Chattogram Highway,Highway,Smash,Microbus,Bike,1,1,"Napitkhali, Eidgao, Cox's Bazar",2025-1-2
+2025,1,2,Thu,,5,12:00,Cox's Bazar,Ukhia,Balukhali,Cox's Bazar-Teknaf Highway,Highway,Clash,Bus-Bike,Bike,2,,"Balukhali, Ukhia, Cox's Bazar",2025-1-2
+2025,1,2,Thu,,6,11:15,Barishal,Gournadi,Khanjapur,Dhaka-Barishal Highway,Highway,Smash,Bus-Bike,Bike,1,1,"Khanjapur, Gournadi, Barishal",2025-1-2
+2025,1,2,Thu,,7,16:00,Chattogram,Satkania,Keranihat,Keranihat-Bandarban Road,Upazilla Road,Hit,Bus ,,1,,"Keranihat, Satkania, Chattogram",2025-1-2
+2025,1,2,Thu,,8,5:00,Munshiganj,Mawa,hasara,Dhaka-Mawa Highway,Highway,Clash,Bus-Trcuk,,2,0,"hasara, Mawa, Munshiganj",2025-1-2
+2025,1,2,Thu,,9,11:00,Munshiganj,Sirajdikhan,Nimtali,Dhaka-Mawa Highway,Highway,Smash,Bus,Covered Van,2,,"Nimtali, Sirajdikhan, Munshiganj",2025-1-2
+2025,1,3,Fri,,1,21:00,Narayanganj,Araihajar,"boroitola, satgram",Dhaka-Sylhet Highway,Highway,Hit,Bus,,1,,"boroitola, satgram, Araihajar, Narayanganj",2025-1-3
+2025,1,2,Thu,,10,21:00,Bogura,Sherpur,Mirjapur,Dhaka-Bogura Highway,Highway,Hit,Bus,,1,,"Mirjapur, Sherpur, Bogura",2025-1-2
+2025,1,3,Fri,,2,9:30,Gaibandha,Gobindaganj,Pashcim Choumatha,,Local,Lost control,Bike,Bike,1,,"Pashcim Choumatha, Gobindaganj, Gaibandha",2025-1-3
+2025,1,2,Thu,,11,19:00,Sunamganj,Jagannathpur,Kalkalia,Pagla-Jagannathpur-aushkandi highway,Highway,Lost control,Bike,Bike,1,1,"Kalkalia, Jagannathpur, Sunamganj",
+2025,1,2,Thu,,12,7:30,Jhenaidah,Jhenaidah,Harishangkarpur,Shailakupa,Local,Hit,Easybike,,1,,"Harishangkarpur, Jhenaidah, Jhenaidah",
+2025,1,2,Thu,,13,8:00,Jhenaidah,Jhenaidah,Hatgopalpur,Hatgopalpur,Local,Smash,Bus,Van,1,,"Hatgopalpur, Jhenaidah, Jhenaidah",
+2025,1,2,Thu,,14,NA,Jhenaidah,Kaliganj,Raghunathpur,Raghunathpur,Local,Hit,Bus,,1,,"Raghunathpur, Kaliganj, Jhenaidah",
+2025,1,2,Thu,,15,19:00,Chattogram,Mirsarai,Economic Zone,Economic Zone road,Local,Hit,Car,,1,,"Economic Zone, Mirsarai, Chattogram",
+2025,1,3,Fri,,3,20:00,Dhaka,Dhamrai,Kosmos,Dhaka-Aricha,Highway,Smash,Truck,Bike,1,1,"Kosmos, Dhamrai, Dhaka",
+2025,1,4,Sat,,1,8:00,Patuakhali,Kalapara,Kalapara,Patuakhali-Kalapara Road,Highway,Hit,Pickup,,1,,"Kalapara, Kalapara, Patuakhali",
+2025,1,4,Sat,5Jan,2,9:00,Noakhali,Companiganj,Charkakra,Royal Brick Field,Local,Lost control,Truck,,1,,"Charkakra, Companiganj, Noakhali",
+2025,1,5,Sun,,1,9:00,Gazipur,Tongi,Station Road,Dhaka-Mymensingh Highway,Highway,Lost control,Bike,,1,,"Station Road, Tongi, Gazipur",
+2025,1,4,Sat,,3,21:00,Sylhet,Zakiganj,Atgram Station,Zakiganj-Sylhet Road,Upazilla Road,Clash,Truck-CNG,,1,1,"Atgram Station, Zakiganj, Sylhet",
+2025,1,5,Sun,6Jan,2,15:00,Natore,Singra,,Natore-Bogura Highway,Highway,Lost control,Bike,Bike,2,1,", Singra, Natore",
+2025,1,6,Mon,7 Jan,1,8:00,Natore,Bagatipara,Doyarampur,Hijli Jame Mosque,Local ,Lost control,Bike,Bike,1,1,"Doyarampur, Bagatipara, Natore",
+2025,1,6,Mon,,2,10:00,Munshiganj ,Munshignaj ,Bajrojogini,Bhattacharjapara,Local,Hit,Bike,,1,3,"Bajrojogini, Munshignaj , Munshiganj ",
+2025,1,5,Sun,,3,20:00,Mymensingh ,Bhaluka,Mollikbari,Dhaka-Mymensingh Highway ,Highway ,Smash,Truck,Bike,1,,"Mollikbari, Bhaluka, Mymensingh ",
+2025,1,6,Mon,,3,8:00,Sunamganj ,Shantiganj,Sichni Bridge,Dabor-Jagannathpur Road,Local,Clash,CNG-Bike,Bike,2,,"Sichni Bridge, Shantiganj, Sunamganj ",
+2025,1,7,Tue,8Jan,1,16:30,Gazipur Mjnshi,Kaliakoir ,Chairman Bazar,Kaliakoir-Fulbaria-Mawna,Local,Clash,Truck-Easybike,Easybike,3,3,"Chairman Bazar, Kaliakoir , Gazipur Mjnshi",
+2025,1,7,Tue,,2,17:30,Munshiganj ,Sirajdikhan,Mostofaganj Madrasha,Srinagar-Munshiganj Road,Local,Clash,Bike-Easybike,Bike-Easybike,1,3,"Mostofaganj Madrasha, Sirajdikhan, Munshiganj ",
+2025,1,6,Mon,,4,19:00,Noakhali ,Noakhali ,Upazila Parishad,Upazila Parishad,,Clash,Bike-CNG,Bike,1,,"Upazila Parishad, Noakhali , Noakhali ",
+2025,1,7,Tue,,3,8:00,Dhaka ,Savar ,bpatc,Dhaka-Aricha Highway ,Highway ,Hit,Bus,,1,,"bpatc, Savar , Dhaka ",
+2025,1,8,Wed,9Jan,1,15:30,Meherpur,Gangni,akubpir,Meherpur-Kushtia,Highway ,Clash,Bus-Bike,Bike ,2,,"akubpir, Gangni, Meherpur",
+2025,1,8,Wed,,2,5:00,Gaibandha ,Palashbari,Akh kroy kendra,Dhaka-Bogura Highway ,Highway ,Hit,Bus,Truck,1,10,"Akh kroy kendra, Palashbari, Gaibandha ",
+2025,1,8,Wed,10Jan,3,17:00,Chattogram ,Banshkhali,Sadhonpur,Anwara PAB road,Upazilla Road,Hit,Truck ,,1,,"Sadhonpur, Banshkhali, Chattogram ",
+2025,1,9,Thu,,1,12:00,Cox’s Bazar,Ukhiya ,Kutupalong amgachtola,Amgachtola,Local ,Clash,Truck,Bike,1,2,"Kutupalong amgachtola, Ukhiya , Cox’s Bazar",
+2025,1,9,Thu,,2,12:00,Cumilla ,Chandina ,Belashor,Dhaka-Chittagong Highway ,Highway ,Smash,Bus,Car,1,5,"Belashor, Chandina , Cumilla ",
+2025,1,9,Thu,,3,8:00,Chattogram ,Rangunia,Ichakhali land office,Rangunia-Kaptai Road,Upazilla Road,Clash,Truck,CNG,1,4,"Ichakhali land office, Rangunia, Chattogram ",
+2025,1,10,Fri,11Jan,1,10:00,Gopalgonj ,Gopalganj,"Durgapur Mandir, Jalalabad",Gopinathpur-Kotakhali Road,Local,Lost control,Bike,Bike,2,,"Durgapur Mandir, Jalalabad, Gopalganj, Gopalgonj ",
+2025,1,9,Thu,,4,19:00,Madaripur ,Rajoir,Rothkhola,Dhaka-Barishal highway ,Highway ,Clash ,Bus ,Bike,2,,"Rothkhola, Rajoir, Madaripur ",
+2025,1,10,Fri,,2,17:00,Chattogram ,Chattogram ,Koigram Bazar,Chattogram - Karnaphuli Road ,Highway ,Smash,Truck ,Bike,1,2,"Koigram Bazar, Chattogram , Chattogram ",
+2025,1,11,Sat,12,1,8:30,Habiganj ,madhabpur,Shahjibazar,Dhaka-Sylhet Highway ,Highway ,Smash,Car,Easybike,3,,"Shahjibazar, madhabpur, Habiganj ",
+2025,1,10,Fri,,3,9:00,Lakshmipur ,Lakshmipur ,Basubazar,Lakshmipur - Ramganj Road,Upazilla Road,Clash,CNG,Bike,1,5,"Basubazar, Lakshmipur , Lakshmipur ",
+2025,1,10,Fri,,4,20:00,Lakshmipur ,Lakshmipur ,Pearapur,Lakshmipur - Ramgati Road,Upazila ,Clash,CNG,Bike,1,4,"Pearapur, Lakshmipur , Lakshmipur ",
+2025,1,11,Sat,,2,9:45,Munshiganj ,gozaria,Jamaldi bus stand,Dhaka-Chittagong Highway ,Highway ,Hit,Car,,1,,"Jamaldi bus stand, gozaria, Munshiganj ",
+2025,1,11,Sat,,3,8:00,Kushtia ,Kumarkhali,Syed Masood Rumi Bridge,Syed Masood Rumi Bridge,Upazilla Road,Hit,Truck,,1,3,"Syed Masood Rumi Bridge, Kumarkhali, Kushtia ",
+2025,1,,,,,,Natore,Naldanga,,,,,,,,,", Naldanga, Natore",
+2025,1,,,,,,,,,,,,,,,,", , ",
+2025,1,,,,,,,,,,,,,,,,", , ",
+2025,1,,,,,,,,,,,,,,,,", , ",
+2025,1,,,,,,,,,,,,,,,,", , ",
+2025,1,,,,,,,,,,,,,,,,", , ",
+2025,1,,,,,,,,,,,,,,,,", , ",
+2025,1,,,,,,,,,,,,,,,,", , ",
+2025,1,,,,,,,,,,,,,,,,", , ",
+2025,1,,,,,,,,,,,,,,,,", , ",
+,,,,,,,,,,,,,,,,,", , ",
+,,,,,,,,,,,,,,,,,", , ",
+,,,,,,,,,,,,,,,,,", , ",
+,,,,,,,,,,,,,,,,,", , ",
+,,,,,,,,,,,,,,,,,", , ",

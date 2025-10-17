@@ -20,7 +20,7 @@ p3 <- spplot(bd_dist_map, "scc47b", col.regions = brewer.pal(n = 5, name = "Gree
        cuts=4, col='transparent', main='Cadet Map (47B)',
        sub='', scales=list(draw=T))
 
-
+p3
 dev.off()
 
 map_bd <- map_data("world") %>% filter(region == "Bangladesh")
