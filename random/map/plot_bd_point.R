@@ -20,11 +20,14 @@ bd_dist |> ggplot()+
   geom_point(data = acclatlon, 
              aes(x = lon, 
                  y=lat, 
-                 color= "red", 
+                 fill= original_killed, 
                  size = original_killed,
                  alpha = 0.9))+
   labs(x = "", y = "")+
-  scale_fill_viridis_c()
+  theme_void()+
+  scale_fill_gradient(name = "Injured",
+                      low = "white",
+                      high = "blue")
 
 
 
