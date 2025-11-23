@@ -15,19 +15,21 @@ acclatlon <- read_csv("random/map/data/acclatlon.csv")
 
 View(acclatlon)
 
-bd_dist |> ggplot()+
-  geom_sf()+
+bd_dist |> ggplot() +
+  geom_sf() +
   geom_point(data = acclatlon, 
              aes(x = lon, 
-                 y=lat, 
-                 fill= original_killed, 
-                 size = original_killed,
-                 alpha = 0.9))+
-  labs(x = "", y = "")+
-  theme_void()+
-  scale_fill_gradient(name = "Injured",
-                      low = "white",
-                      high = "blue")
-
+                 y = lat, 
+                 fill = original_killed,  # ← Mapped to FILL
+                 size = original_injured),
+             shape = 21,                  # ← Shape that uses FILL
+             alpha = 0.7) +
+  labs(x = "", y = "") +
+  facet_wrap(~original_day) +
+  theme_void() +
+  scale_fill_gradient(name = "Killed",    # ← Changed to FILL gradient
+                      low = "blue",
+                      high = "red") +
+  scale_size_continuous(name = "Injured")
 
 

@@ -23,6 +23,22 @@ ggplot(tes_data)+
 
 # Create a neighbor list
 
-list_nb <- poly2nb(tes_data, queen = TRUE)
+list_nb <- spdep::poly2nb(tes_data, queen = TRUE)
 
+empty_nb <- which(card(list_nb) == 0)
 
+tes_subset <- tes_data[-empty_nb, ]
+
+names(tes_data)
+
+# Further cleaning
+
+which(is.na(tes_data$TreeEquityScore))
+which(is.infinite(tes_data$TreeEquityScore))
+tes_data <- na.omit(tes_data)
+
+tes_nb <- poly2nb(tes_data, queen = TRUE)
+
+test_w_binary <- nb2listw(test_nb, style = "B")
+
+test_lag <- lag.listw(test_w_binary, tes_data$TreeEquityScore)
