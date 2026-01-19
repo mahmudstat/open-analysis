@@ -123,6 +123,8 @@ result <- count_iterations(77464479)
 result$iterations  # Number of iterations to reach 6300000100
 result$path        # The sequence of numbers encountered
 
+count_iterations(77464659)
+
 # Print the journey
 cat("Path to 6300000100:\n")
 for(i in 1:length(result$path)) {
